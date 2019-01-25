@@ -14,10 +14,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- local css -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>coelib studio</title>
+
+      <!-- owl Carousel-->
+      <link rel="stylesheet" href="{% static 'OwlCarousel/css/owl.carousel.min.css'%}">
+      <link rel="stylesheet" href="{% static 'OwlCarousel/css/owl.theme.default.min.css' %}">
+    <title>coelib studio services </title>
   </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top mb-15" style>
         <!-- url as named in the view (url pattern)-->
     <a class="navbar-brand" href="{% url 'index' %}">
           Coelib Studio Management
@@ -30,37 +34,40 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
         <ul class="navbar-nav ml-auto">
-            {% if user.is_authenticated %}
+             {% if user.is_authenticated %}
             <li class="nav-item">
                   <p class="nav-link"> Welcome: {{ user.username }}</p>
                 </li>
+
                 <li class="nav-item">
-                  <a class="nav-link" href="">View Your Works</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="">Read Comments</a>
+                  <a class="nav-link" href="">Make a Comment</a>
                 </li>
                  <li class="nav-item">
-                  <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                  <a class="nav-link" href="{% url 'logout' %}">logout</a>
                 </li>
 
             {% else %}
 
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'sessions' %}">Book a Session</a>
+          <a class="nav-link" href="{% url 'login_client' %}">Get Our Services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'services' %} ">Our Services</a>
+          <a class="nav-link" href="{% url 'services' %}">Our Services</a>
         </li>
+
+         <li class="nav-item">
+          <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+        </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'producer_login' %}">Producer Login</a>
+          <a class="nav-link" href="{% url 'login_client' %}">login</a>
         </li>
-          {% endif %}
+    {% endif %}
       </ul>
 
     </div>
   </nav>
-    <br><br>
+    <br><br><br>
 
     <div>
         {% if messages%}
@@ -216,4 +223,33 @@
     <script type="text/javascript" src="{% static 'bootstrap/MDB/js/jquery-3.3.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/MDB/js/popper.min.js' %}"></script>
      <script type="text/javascript" src="{% static 'bootstrap/MDB/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript"  src="{%static 'OwlCarousel/js/owl.carousel.min.js' %}"></script>
+
+<script type="text/javascript">
+      $('.owl-carousel').owlCarousel({
+          loop:true,
+          margin:10,
+          nav:false,
+          dot:false,
+          center:true,
+          autoplay:true,
+          responsive:{
+              0:{
+                  items:3
+              },
+              480:{
+                  items:3
+              },
+              768:{
+                  items:4
+              },
+              1000:{
+                  items:4
+              },
+              1200:{
+                  items:4
+              }
+          }
+      })
+  </script>
 </body>

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 # Create your views here.
 
@@ -20,7 +20,6 @@ def p_login(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'You have been logged in, WELCOME!')
-
             return redirect('producerpage')
         else:
             messages.success(request, 'Error during login, please retry')
@@ -41,3 +40,8 @@ def logout_user(request):
     messages.success(request, 'You have been logged out!')
 
     return redirect('index')
+
+
+def sessions(request):
+
+    return render(request,'newusers/sessions.html')

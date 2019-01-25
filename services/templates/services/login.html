@@ -1,10 +1,12 @@
-{% extends 'newusers/base.html' %}
+
+
+{% extends 'services/base.html' %}
 
 {% block content %}
 
     <div id="producer-login-card" class="card col-md-4 offset-md-4 mt-10">
-    <div class=" crad-header mb-5">  <h2 class="text-center h1 mt-2 ">Producer Login</h2>	<hr> </div>
-    <form method="POST" action="{%url 'producer_login'%}">
+    <div class=" crad-header mb-5">  <h2 class="text-center h1 mt-2 ">login for Our services </h2>	<hr> </div>
+    <form method="POST" action="{% url 'login_client' %}">
     	{% csrf_token %}
 
     	<div class="form-group">

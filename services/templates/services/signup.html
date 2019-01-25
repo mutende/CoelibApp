@@ -1,0 +1,20 @@
+{% extends 'services/base.html' %}
+
+{% block content %}
+
+<div id="producer-login-card" class="card col-md-4 offset-md-4 mt-10">
+    <div class=" crad-header mb-5">  <h2 class="text-center h1 mt-2 "> SignUp Here </h2>	<hr> </div>
+    <form method="POST" action = "{% url 'signup' %}">
+    	{% csrf_token %}
+
+    	 {% if form.errors %}
+           <p>Errors in your Form ...</p>
+          {% endif %}
+           {{ form.as_p }}
+    		<button type="submit" class="btn btn-primary mt-2 mr-auto ml-auto">
+    		Register
+    	</button>
+    	</div>
+
+    </form>
+{% endblock %}
