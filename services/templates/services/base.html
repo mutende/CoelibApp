@@ -36,10 +36,13 @@
         <ul class="navbar-nav ml-auto">
 
         <li class="nav-item">
-          <a class="nav-link" href="">Comment</a>
+          <a class="nav-link" href="{% url 'services' %}">Our Services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'services' %}">Our Services</a>
+          <a class="nav-link" href="{% url 'services' %}">Inquiries</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Feedback</a>
         </li>
       </ul>
 
@@ -213,19 +216,19 @@
           autoplay:true,
           responsive:{
               0:{
-                  items:3
+                  items:2
               },
               480:{
-                  items:3
+                  items:2
               },
               768:{
-                  items:4
+                  items:3
               },
               1000:{
-                  items:4
+                  items:3
               },
               1200:{
-                  items:4
+                  items:3
               }
           }
       })

@@ -6,7 +6,7 @@
     <div class="container">
         <div  class="container-fluid mt-5 ">
             <p class="lead">
-                Coelib Studio offers the following services to our customers, to receive our services, you can <a href="">login here </a> and access them.
+                Coelib Studio offers the following services to our customers, to receive our services, Feel free to contuct us and be part of our success. Music brings joy.
 
             </p>
         </div>
@@ -65,10 +65,10 @@
 
     <!--owl carousel-->
     <div class="owl-carousel owl-theme mt-10" style="margin-top:60px;">
-                        <div class="item"><h6 class="font-weight-bold text-center">Music Production</h6><a href="services"><img alt="image" class="img-fluid" src="{% static 'images/studio-image6.jpg' %}"></a></div>
-                        <div class="item"><h6 class="font-weight-bold text-center">Book session</h6><a href="services"><img alt="image" class="img-fluid" src="{% static 'images/studio-image7.jpg' %}"></a></div>
-                        <div class="item"><h6 class="font-weight-bold text-center">Hire Producers</h6><a href="services"><img alt="image" class="img-fluid" src="{% static 'images/studio-image8.jpg' %}"></a></div>
-                         <div class="item"><h6 class="font-weight-bold text-center">Just Some Session</h6><a href="services"><img alt="image" class="img-fluid" src="{% static 'images/studio-image9.jpeg' %}"></a></div>
+                        <div class="item"><h6 class="font-weight-bold text-center">Music Production</h6><a href="{% url 'music_production_session' %}"><img alt="image" class="img-fluid" src="{% static 'images/studio-image6.jpg' %}"></a></div>
+                        <div class="item"><h6 class="font-weight-bold text-center">Book session</h6><a href="{% url 'studio_session' %}"><img alt="image" class="img-fluid" src="{% static 'images/studio-image7.jpg' %}"></a></div>
+                        <div class="item"><h6 class="font-weight-bold text-center">Hire Producers</h6><a href="{% url 'hire_producers' %}"><img alt="image" class="img-fluid" src="{% static 'images/studio-image8.jpg' %}"></a></div>
+                         <!--<div class="item"><h6 class="font-weight-bold text-center">Just Some Session</h6><a href="{% url 'hire_producers' %}"><img alt="image" class="img-fluid" src="{% static 'images/studio-image9.jpeg' %}"></a></div>-->
 
 
                     </div>
