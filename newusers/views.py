@@ -40,8 +40,3 @@ def logout_user(request):
     messages.success(request, 'You have been logged out!')
 
     return redirect('index')
-
-
-def sessions(request):
-
-    return render(request,'newusers/sessions.html')
