@@ -1,5 +1,148 @@
 {% extends 'services/base.html' %}
 
+{% block title %}
+<title> hire producer </title>
+{% endblock %}
+
+
 {% block content %}
-    <h1>Hire Producers</h1>
+<div class="container-fluid">
+   <div class="row">
+       <div class="container col-md-9 card-header">
+           <h1 class="h1 text-center">Hire Producers</h1>
+           <hr>
+            <p class="text-sm-left">Hello dear customer, we wish to appreciate the trust you have in our works for choosing to work with us, our studio offer different services you can
+                <a href="{% url 'services' %}"> click here </a> to see them  an select accordingly.</p><p class="text-sm-left">At this page we allow our customers to hire the producers that we have
+                in our studio to help you. If you have some complain or comments towards either of them just <a href=""> click here </a> to raise your concern, otherwise
+           you can continue with hiring any of our producer. Currently we have ** 5 ** producers.</p><p class="text-sm-left">Check on their schedule and hire them.</p> <p class="text-sm-left">Thank you.
+            </p>
+
+           <hr>
+
+            <form action="" method="GET">
+                {% csrf_token %}
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                          <label for="dateofHire">Date of Hire</label>
+                          <input type="text" class="form-control" id="dateofHire"  name="doh">
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="selectProducer">Select Producer</label>
+                      <select id="selectProducer" class="form-control text-center">
+                        <option value="">--NONE--</option>
+                        <option>Producer1</option>
+                        <option>Producer2</option>
+                        <option>Producer3</option>
+                        <option>Producer4</option>
+                        <option>Producer5</option>
+                      </select>
+                        </div>
+
+
+
+
+                  </div>
+
+                    <button class="btn btn-primary" id="check">Check</button>
+                 </form>
+           <hr>
+           <br><br><br>
+     <h1 class="h3 text-center">Hire</h1>
+            <form method="POST">
+                {% csrf_token %}
+               <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="name1">Last name</label>
+                          <input type="text" class="form-control" id="name1" placeholder="Last Name" name="l_name">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="name2">Other Names</label>
+                          <input type="password" class="form-control" id="name2" placeholder="Other Names" name="o_name">
+                        </div>
+                  </div>
+                  <div class="form-row">
+                        <div class="form-group col-md-4">
+                          <label for="inputemail">Email</label>
+                          <input type="email" class="form-control" id="inputemail" placeholder="Email" name="email">
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="inputphone">Phone Number</label>
+                          <input type="text" class="form-control" id="inputphone" placeholder="Phone Number" name="phone">
+                        </div>
+                         <div class="form-group col-md-4">
+                          <label for="inputlocation">City/Location</label>
+                          <input type="text" class="form-control" id="inputlocation" placeholder="city / location" name="location">
+                        </div>
+                  </div>
+
+               <!--&lt;!&ndash;datepicker&ndash;&gt;-->
+        <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+      <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
+      <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+      <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+      <!--<script>-->
+          <!--$( function() {-->
+            <!--$( "#datepicker" ).datepicker();-->
+          <!--} );
+          </script>-->
+
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label for="datepicker">Date of Hire</label>
+                      <input type="text" class="form-control" id="datepicker" name="dateinput">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="inputState">Select Producer</label>
+                      <select id="inputState" class="form-control">
+                        <option value="">--NONE--</option>
+                        <option>Producer1</option>
+                        <option>Producer2</option>
+                        <option>Producer3</option>
+                        <option>Producer4</option>
+                        <option>Producer5</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="hire_period">Duration days</label>
+                      <input type="number" class="form-control" id="hire_period">
+                    </div>
+                  </div>
+                       <div class="form-row">
+                        <div class="form-group col-md-6">
+                             <label for="description">Purpose</label>
+                            <textarea class="form-control" name="desc" id="description" cols="30" rows="3"></textarea>
+                        </div>
+                           </div>
+                  <button type="submit" class="btn btn-primary" onclick="showAlert()">Hire</button>
+                </form>
+
+           <script>
+               function showAlert(){
+                alert('Thank for your request, you will get feedback');
+               }
+           </script>
+
+     </div>
+
+       <div class="container col-md-3">
+           <div class="container">
+
+                <div class="card-body">
+                   <h3 class="text-center h3">
+                       Notifications and Updates
+                   </h3>
+               Our producers.
+               some other info
+
+           </div>
+
+           </div>
+
+
+       </div>
+
+   </div>
+
+ </div>
  {% endblock %}

@@ -1,5 +1,9 @@
 {% extends 'services/base.html' %}
 
+{% block title %}
+<title> services </title>
+{% endblock %}
+
 {% block content %}
 
 <div style="margin-bottom:40px;">
@@ -25,7 +29,7 @@
                 link musicians to producers within our studios
             </p>
             </div>
-            <a class="btn btn-primary" href="{% url 'music_production_session' %}">Book Session for the Service</a>
+            <a class="btn btn-primary" href="{% url 'studio_session' %}">Book Session for the Service</a>
         </div>
 
 
@@ -65,7 +69,7 @@
 
     <!--owl carousel-->
     <div class="owl-carousel owl-theme mt-10" style="margin-top:60px;">
-                        <div class="item"><h6 class="font-weight-bold text-center">Music Production</h6><a href="{% url 'music_production_session' %}"><img alt="image" class="img-fluid" src="{% static 'images/studio-image6.jpg' %}"></a></div>
+                        <div class="item"><h6 class="font-weight-bold text-center">Music Production</h6><a href="{% url 'studio_session' %}"><img alt="image" class="img-fluid" src="{% static 'images/studio-image6.jpg' %}"></a></div>
                         <div class="item"><h6 class="font-weight-bold text-center">Book session</h6><a href="{% url 'studio_session' %}"><img alt="image" class="img-fluid" src="{% static 'images/studio-image7.jpg' %}"></a></div>
                         <div class="item"><h6 class="font-weight-bold text-center">Hire Producers</h6><a href="{% url 'hire_producers' %}"><img alt="image" class="img-fluid" src="{% static 'images/studio-image8.jpg' %}"></a></div>
                          <!--<div class="item"><h6 class="font-weight-bold text-center">Just Some Session</h6><a href="{% url 'hire_producers' %}"><img alt="image" class="img-fluid" src="{% static 'images/studio-image9.jpeg' %}"></a></div>-->
