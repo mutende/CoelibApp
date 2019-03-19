@@ -1,20 +1,11 @@
 from django.db import models
 
-
-class Producer_Sessions(models.Model):
-
-    id = models.AutoField(primary_key=True)
-    fullName = models.CharField(max_length=100)
-    phoneNumber = models.CharField(max_length=13)
-    start_date = models.DateField()
-    starting_time = models.TimeField()
-
-
-class Music_Artist_Sessions(models.Model):
+class StudioSessions(models.Model):
 
     id = models.AutoField(primary_key=True)
     fullName = models.CharField(max_length=100)
     phoneNumber = models.CharField(max_length=13)
+    booked_as = models.CharField(max_length=20)
     start_date = models.DateField()
     starting_time = models.TimeField()
 
