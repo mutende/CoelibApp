@@ -1,6 +1,5 @@
 from django.shortcuts import render
-# Create your views here.
-
+from services.forms import HireProducerForm
 
 def home(request):
 
@@ -18,5 +17,6 @@ def studio_session(request):
 
 
 def hire_producers(request):
-
-    return render(request, 'services/hire_producers.html', {})
+    form = HireProducerForm()
+    context = {'form': form}
+    return render(request, 'services/hire_producers.html', context)

@@ -51,69 +51,69 @@
      <h1 class="h3 text-center">Hire</h1>
             <form method="POST">
                 {% csrf_token %}
+
                <div class="form-row">
                         <div class="form-group col-md-6">
-                          <label for="name1">Last name</label>
-                          <input type="text" class="form-control" id="name1" placeholder="Last Name" name="l_name">
+                           {{ form.as_p}}
                         </div>
-                        <div class="form-group col-md-6">
-                          <label for="name2">Other Names</label>
-                          <input type="password" class="form-control" id="name2" placeholder="Other Names" name="o_name">
-                        </div>
+                        <!--<div class="form-group col-md-6">-->
+                          <!--<label for="name2">Other Names</label>-->
+                          <!--<input type="password" class="form-control" id="name2" placeholder="Other Names" name="o_name">-->
+                        <!--</div>-->
                   </div>
-                  <div class="form-row">
-                        <div class="form-group col-md-4">
-                          <label for="inputemail">Email</label>
-                          <input type="email" class="form-control" id="inputemail" placeholder="Email" name="email">
-                        </div>
-                        <div class="form-group col-md-4">
-                          <label for="inputphone">Phone Number</label>
-                          <input type="text" class="form-control" id="inputphone" placeholder="Phone Number" name="phone">
-                        </div>
-                         <div class="form-group col-md-4">
-                          <label for="inputlocation">City/Location</label>
-                          <input type="text" class="form-control" id="inputlocation" placeholder="city / location" name="location">
-                        </div>
-                  </div>
+                  <!--<div class="form-row">-->
+                        <!--<div class="form-group col-md-4">-->
+                          <!--<label for="inputemail">Email</label>-->
+                          <!--<input type="email" class="form-control" id="inputemail" placeholder="Email" name="email">-->
+                        <!--</div>-->
+                        <!--<div class="form-group col-md-4">-->
+                          <!--<label for="inputphone">Phone Number</label>-->
+                          <!--<input type="text" class="form-control" id="inputphone" placeholder="Phone Number" name="phone">-->
+                        <!--</div>-->
+                         <!--<div class="form-group col-md-4">-->
+                          <!--<label for="inputlocation">City/Location</label>-->
+                          <!--<input type="text" class="form-control" id="inputlocation" placeholder="city / location" name="location">-->
+                        <!--</div>-->
+                  <!--</div>-->
 
-               <!--&lt;!&ndash;datepicker&ndash;&gt;-->
-        <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
-      <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
-      <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
-      <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+               <!--datepicker-->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <link rel="stylesheet" href="/resources/demos/style.css">
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
       <!--<script>-->
           <!--$( function() {-->
             <!--$( "#datepicker" ).datepicker();-->
           <!--} );
           </script>-->
 
-                  <div class="form-row">
-                    <div class="form-group col-md-4">
-                      <label for="datepicker">Date of Hire</label>
-                      <input type="text" class="form-control" id="datepicker" name="dateinput">
-                    </div>
-                    <div class="form-group col-md-4">
-                      <label for="inputState">Select Producer</label>
-                      <select id="inputState" class="form-control">
-                        <option value="">--NONE--</option>
-                        <option>Producer1</option>
-                        <option>Producer2</option>
-                        <option>Producer3</option>
-                        <option>Producer4</option>
-                        <option>Producer5</option>
-                      </select>
-                    </div>
-                    <div class="form-group col-md-3">
-                      <label for="hire_period">Duration days</label>
-                      <input type="number" class="form-control" id="hire_period">
-                    </div>
-                  </div>
-                       <div class="form-row">
-                        <div class="form-group col-md-6">
-                             <label for="description">Purpose</label>
-                            <textarea class="form-control" name="desc" id="description" cols="30" rows="3"></textarea>
-                        </div>
-                           </div>
+                  <!--<div class="form-row">-->
+                    <!--<div class="form-group col-md-4">-->
+                      <!--<label for="datepicker">Date of Hire</label>-->
+                      <!--<input type="text" class="form-control" id="datepicker" name="dateinput">-->
+                    <!--</div>-->
+                    <!--<div class="form-group col-md-4">-->
+                      <!--<label for="inputState">Select Producer</label>-->
+                      <!--<select id="inputState" class="form-control">-->
+                        <!--<option value="">&#45;&#45;NONE&#45;&#45;</option>-->
+                        <!--<option>Producer1</option>-->
+                        <!--<option>Producer2</option>-->
+                        <!--<option>Producer3</option>-->
+                        <!--<option>Producer4</option>-->
+                        <!--<option>Producer5</option>-->
+                      <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="form-group col-md-3">-->
+                      <!--<label for="hire_period">Duration days</label>-->
+                      <!--<input type="number" class="form-control" id="hire_period">-->
+                    <!--</div>-->
+                  <!--</div>-->
+                       <!--<div class="form-row">-->
+                        <!--<div class="form-group col-md-6">-->
+                             <!--<label for="description">Purpose</label>-->
+                            <!--<textarea class="form-control" name="desc" id="description" cols="30" rows="3"></textarea>-->
+                        <!--</div>-->
+                           <!--</div>-->
                   <button type="submit" class="btn btn-primary" onclick="showAlert()">Hire</button>
                 </form>
 
@@ -145,4 +145,12 @@
    </div>
 
  </div>
+
+<script>
+  $(function () {
+    $("#datetimepicker1").datetimepicker({
+      format: 'DD/MM/YYYY HH:mm',
+    });
+  });
+</script>
  {% endblock %}
