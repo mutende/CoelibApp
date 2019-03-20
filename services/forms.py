@@ -12,8 +12,13 @@ class HireProducerForm(forms.ModelForm):
         self.fields['fullName'].widget.attrs['class'] = 'form-control'
         self.fields['phoneNumber'].widget.attrs['class'] = 'form-control'
         self.fields['producer_name'].widget.attrs['class'] = 'form-control'
+
         self.fields['hire_date'].widget.attrs['class'] = 'form-control'
+        self.fields['hire_date'].widget.attrs['placeholder'] = 'dd/mm/yyyy'
+
         self.fields['hire_time'].widget.attrs['class'] = 'form-control'
+        self.fields['hire_time'].widget.attrs['placeholder'] = '00:00'
+
         self.fields['duration_days'].widget.attrs['class'] = 'form-control'
         self.fields['duration_hrs'].widget.attrs['class'] = 'form-control'
 
@@ -25,6 +30,11 @@ class StudioSessionForm(forms.ModelForm):
         super(StudioSessionForm, self).__init__(*args,**kwargs)
         self.fields['fullName'].widget.attrs['class'] = 'form-control'
         self.fields['phoneNumber'].widget.attrs['class'] = 'form-control'
+
         self.fields['start_date'].widget.attrs['class'] = 'form-control'
+        self.fields['start_date'].widget.attrs['placeholder'] = 'dd/mm/yyyy'
+
         self.fields['booked_as'].widget.attrs['class'] = 'form-control'
+
         self.fields['starting_time'].widget.attrs['class'] = 'form-control'
+        self.fields['starting_time'].widget.attrs['placeholder'] = '00:00'

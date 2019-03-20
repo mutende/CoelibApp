@@ -20,4 +20,4 @@ class Hire_Producer(models.Model):
     hire_time = models.TimeField()
     duration_days = models.IntegerField(default=0)
     duration_hrs = models.IntegerField(default=0)
-    available_date= models.DateField()
+    available_date= models.DateField(blank=True, null=True)
