@@ -21,30 +21,36 @@
             </p>
            <hr>
            <h1 class="h3 text-center"> Book</h1>
-            <div class="container">
-                {% if messages%}
-                  {% for message in messages %}
-                    <div class="alert alert-warning alert-dismissable" role="alert">
-                      <button class="close" data-dismiss="alert">
-                        <small><sup>x</sup></small>
-                      </button>
-                      {{ message }}
-                    </div>
-                  {% endfor %}
-                {% endif%}
-              </div>
+
            <form method="POST">
+             <div>
+                 {% if messages%}
+                 {% for message in messages %}
+                   <div class="alert alert-warning alert-dismissable" role="alert">
+                     <button class="close" data-dismiss="alert">
+                       <small><sup>x</sup></small>
+                     </button>
+                     {{ message }}
+                   </div>
+                 {% endfor %}
+               {% endif%}
+
+               
                {% csrf_token %}
                <div class="form-row">
                         <div class="form-group col-md-4 offset-2">
                         {{form.as_p}}
-                        <button type="submit" class="btn btn-primary">Book</button>
+                        <button type="submit" class="btn btn-primary" onclick="showAlert()">Book</button>
                         </div>
                   </div>
 
                 </form>
 
-
+                <script>
+                    function showAlert(){
+                     alert('Thank for your request, you will get feedback');
+                    }
+                </script>
      </div>
 
        <div class="container col-md-4">

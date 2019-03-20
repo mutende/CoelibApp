@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from services.forms import HireProducerForm,StudioSessionForm
 from django.contrib import messages
+from django.contrib.auth.models import User
+from services.models import Hire_Producer
 
 def home(request):
 
@@ -13,16 +15,9 @@ def services(request):
 
 
 def studio_session(request):
-    if request.method == 'POST':
-        form = StudioSessionForm()
-        if form.is_valid():
-            form.save()
-            messages.success(request,('Your booking is successful'))
-            return redirect('studio_session')
-        else:
-            messages.success(request,('Error in forms please, correct and submit booking'))
-            return redirect('studio_session')
-    else:
+    form = StudioSessionForm(request.POST or None)
+    if form.is_valid():
+        form.save()
         form = StudioSessionForm()
 
     context = {'form':form}
@@ -30,17 +25,22 @@ def studio_session(request):
 
 
 def hire_producers(request):
-    if request.method == 'POST':
-        form = HireProducerForm()
-        if form.is_valid():
-            form.save()
-            messages.success(request,('Your booking is successful'))
-            return redirect('hire_producers')
-        else:
-            messages.success(request,('Error in forms please, correct and submit booking'))
-            return redirect('hire_producers')
-    else:
-        form = HireProducerForm()
+    Users = User.objects.all()
+    print(Users)
+    search_date = request.GET.get('doh')
+    search_producer = request.GET.get('available')
+    if search_producer == 'Admin':
+        messages.success(request, 'If you select admin you will not be helped, please select other options')
+    print(search_date)
+    print(search_producer)
 
-    context = {'form':form}
+    #search
+    producers_schedule = Hire_Producer.objects.all()
+    print(producers_schedule)
+
+    form = HireProducerForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        form = HireProducerForm()
+    context = {'form':form,'Users':Users,'producers_schedule':producers_schedule}
     return render(request, 'services/hire_producers.html', context)

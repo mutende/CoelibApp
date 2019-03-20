@@ -1,23 +1,22 @@
 from django.db import models
 
 class StudioSessions(models.Model):
-
-    id = models.AutoField(primary_key=True)
+    BOOK_AS_CHOICES = (('Producer','Producer'),('Other','Other'))
     fullName = models.CharField(max_length=100)
     phoneNumber = models.CharField(max_length=13)
-    booked_as = models.CharField(max_length=20)
-    start_date = models.DateField()
-    starting_time = models.TimeField()
+    booked_as = models.CharField(max_length=20, choices=BOOK_AS_CHOICES, default='Other')
+    start_date = models.CharField(max_length=100)
+    starting_time = models.CharField(max_length=100)
 
 
 class Hire_Producer(models.Model):
 
-    id = models.AutoField(primary_key=True)
+
     fullName = models.CharField(max_length=100)
     phoneNumber = models.CharField(max_length=13)
     producer_name= models.CharField(max_length=100)
-    hire_date = models.DateField()
-    hire_time = models.TimeField()
+    hire_date = models.CharField(max_length=100)
+    hire_time = models.CharField(max_length=100)
     duration_days = models.IntegerField(default=0)
     duration_hrs = models.IntegerField(default=0)
-    available_date= models.DateField(blank=True, null=True)
+    available_date= models.CharField(max_length=100,blank=True, null=True)

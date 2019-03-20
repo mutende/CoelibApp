@@ -14,14 +14,23 @@
             <p class="text-sm-left">Hello dear customer, we wish to appreciate the trust you have in our works for choosing to work with us, our studio offer different services you can
                 <a href="{% url 'services' %}"> click here </a> to see them  an select accordingly.</p><p class="text-sm-left">At this page we allow our customers to hire the producers that we have
                 in our studio to help you. If you have some complain or comments towards either of them just <a href=""> click here </a> to raise your concern, otherwise
-                you can continue with hiring any of our producer. Currently we have ** 5 ** producers.</p><p class="text-sm-left">Check on their schedule and hire them.</p> <p class="text-sm-left">Thank you.
+           you can continue with hiring any of our producer. Currently we have ** 5 ** producers.</p><p class="text-sm-left">Check on their schedule and hire them.</p> <p class="text-sm-left">Thank you.
             </p>
 
            <hr>
 
-            <form action="" method="GET">
-                {% csrf_token %}
-
+            <form method="GET">
+              <div>
+                  {% if messages%}
+                  {% for message in messages %}
+                    <div class="alert alert-warning alert-dismissable" role="alert">
+                      <button class="close" data-dismiss="alert">
+                        <small><sup>x</sup></small>
+                      </button>
+                      {{ message }}
+                    </div>
+                  {% endfor %}
+                {% endif%}
                     <div class="form-row">
                         <div class="form-group col-md-4">
                           <label for="dateofHire">Date of Hire</label>
@@ -29,35 +38,54 @@
                         </div>
                         <div class="form-group col-md-4">
                           <label for="selectProducer">Select Producer</label>
-                            <select id="selectProducer" class="form-control text-center">
-                              <option value="">--NONE--</option>
-                              <option>Producer1</option>
-                              <option>Producer2</option>
-                              <option>Producer3</option>
-                              <option>Producer4</option>
-                              <option>Producer5</option>
-                            </select>
+                      <select id="selectProducer" class="form-control text-center" name="available">
+                            {% for users in Users%}
+                              {% if users == "Admin"%}
+                                <option value={{users}} class="disabled">{{users}}</option>
+                              {% else %}
+                                <option value={{users}}>{{users}}</option>
+                              {%endif%}
+
+
+                            {% endfor %}
+
+                      </select>
                         </div>
 
                   </div>
 
                     <button class="btn btn-primary" id="check">Check</button>
             </form>
+
+            {% if producers_schedule %}
+            <div class="container">
+            <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Date Hired</th>
+                          <th>Time Hired</th>
+                          <th>Available Date</th>
+                          </tr>
+                      </thead>
+                        <tbody>
+                {% for producer in producers_schedule %}
+                <tr>
+                  <td>{{ producer.hire_date }}</td>
+                  <td>{{ producer.hire_time }}</td>
+                  <td>{{ producer.available_date }}</td>
+                </tr>
+                {% endfor %}
+
+                      </tbody>
+                    </table>
+                </div>
+            {% endif %}
+
            <hr>
            <br><br><br>
          <h1 class="h3 text-center">Hire</h1>
-            <div class="container">
-                    {% if messages%}
-                      {% for message in messages %}
-                        <div class="alert alert-warning alert-dismissable" role="alert">
-                          <button class="close" data-dismiss="alert">
-                            <small><sup>x</sup></small>
-                          </button>
-                          {{ message }}
-                        </div>
-                      {% endfor %}
-                    {% endif%}
-                </div>
+         <div class="container">
+
             <form method="POST">
                   {% csrf_token %}
 

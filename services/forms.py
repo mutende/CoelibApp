@@ -6,6 +6,7 @@ class HireProducerForm(forms.ModelForm):
     class Meta:
         model = Hire_Producer
         fields = ['fullName','phoneNumber','producer_name','hire_date','hire_time','duration_days','duration_hrs']
+        # fields = ['fullName','phoneNumber',]
 
     def __init__(self, *args, **kwargs):
         super(HireProducerForm, self).__init__(*args, **kwargs)
@@ -26,6 +27,7 @@ class StudioSessionForm(forms.ModelForm):
     class Meta:
         model = StudioSessions
         fields=['fullName','phoneNumber','booked_as','start_date','starting_time']
+        # fields = ['fullName','phoneNumber',]
     def __init__(self,*args,**kwargs):
         super(StudioSessionForm, self).__init__(*args,**kwargs)
         self.fields['fullName'].widget.attrs['class'] = 'form-control'
