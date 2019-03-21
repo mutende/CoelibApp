@@ -1,7 +1,7 @@
 from django.contrib import admin
-from services.models import StudioSessions, HireProducer
+from services.models import StudioSession, HireProducer
 
 # Register your models here.
 
-admin.site.register(StudioSessions)
+admin.site.register(StudioSession)
 admin.site.register(HireProducer)

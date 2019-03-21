@@ -1,4 +1,4 @@
-{% extends 'newusers/base.html' %}
+{% extends 'newusers/base2.html' %}
 
 {% block title %}
     <title> producer login </title>
@@ -6,8 +6,19 @@
 {% endblock %}
 
 {% block content %}
+{% if messages%}
+{% for message in messages %}
+  <div class="alert alert-warning alert-dismissable" role="alert">
+    <button class="close" data-dismiss="alert">
+      <small><sup>x</sup></small>
+    </button>
+    {{ message }}
+  </div>
+{% endfor %}
+{% endif%}
 
     <div id="producer-login-card" class="card col-md-4 offset-md-4 mt-10">
+
     <div class=" crad-header mb-5">  <h2 class="text-center h1 mt-2 ">Producer Login</h2>	<hr> </div>
     <form method="POST" action="{%url 'producer_login'%}">
     	{% csrf_token %}
@@ -26,6 +37,5 @@
 
     </form>
     </div>
-<br><br><br>
 
 {% endblock %}

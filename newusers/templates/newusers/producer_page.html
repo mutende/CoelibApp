@@ -1,11 +1,24 @@
-{% extends 'newusers/base.html' %}
+{% extends 'newusers/base2.html' %}
 
 {% block title %}
     <title> producer home</title>
 {% endblock %}
 
 {% block content %}
+<br><br><br><br>
 <div class="container">
-    <h2 class="h1 green-text"> producers records</h2>
+  <div class="container">
+    {% if messages%}
+    {% for message in messages %}
+      <div class="alert alert-warning alert-dismissable" role="alert">
+        <button class="close" data-dismiss="alert">
+          <small><sup>x</sup></small>
+        </button>
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif%}
+  </div>
+    <h2 class="h5 gray-text text-center">Welcome {{ user.username }} </h2>
 </div>
 {% endblock %}

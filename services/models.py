@@ -1,6 +1,6 @@
 from django.db import models
 
-class StudioSessions(models.Model):
+class StudioSession(models.Model):
     BOOK_AS_CHOICES = (('Producer','Producer'),('Other','Other'))
     fullName = models.CharField(max_length=100)
     phoneNumber = models.CharField(max_length=13)

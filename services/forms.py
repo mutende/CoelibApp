@@ -1,5 +1,5 @@
 from django import forms
-from .models import HireProducer,StudioSessions
+from .models import HireProducer,StudioSession
 
 
 class HireProducerForm(forms.ModelForm):
@@ -25,7 +25,7 @@ class HireProducerForm(forms.ModelForm):
 
 class StudioSessionForm(forms.ModelForm):
     class Meta:
-        model = StudioSessions
+        model = StudioSession
         fields=['fullName','phoneNumber','booked_as','start_date',]
         # fields = ['fullName','phoneNumber',]
     def __init__(self,*args,**kwargs):
