@@ -14,13 +14,12 @@
             <p class="text-sm-left">Hello dear customer, we wish to appreciate the trust you have in our works for choosing to work with us, our studio offer different services you can
                 <a href="{% url 'services' %}"> click here </a> to see them  an select accordingly.</p><p class="text-sm-left">At this page we allow our customers to hire the producers that we have
                 in our studio to help you. If you have some complain or comments towards either of them just <a href=""> click here </a> to raise your concern, otherwise
-           you can continue with hiring any of our producer. Currently we have ** 5 ** producers.</p><p class="text-sm-left">Check on their schedule and hire them.</p> <p class="text-sm-left">Thank you.
+           you can continue with hiring of our producer. Currently we have {{ count }} producer(s).<span class="text-danger">(Admin is not part of producers)</span></p><p class="text-sm-left">Check on their schedule and hire them.</p> <p class="text-sm-left">Thank you.
             </p>
 
            <hr>
 
-            <form method="GET">
-              <div>
+            <!-- <form method="GET">
                   {% if messages%}
                   {% for message in messages %}
                     <div class="alert alert-warning alert-dismissable" role="alert">
@@ -54,43 +53,53 @@
 
                   </div>
 
-                    <button class="btn btn-primary" id="check">Check</button>
-            </form>
+                     <button class="btn btn-primary" id="check">Check</button>
+            </form> -->
+            <div class="container">
+              List of Hired producers for this month will guide to make bookings for this month
+            </div>
 
             {% if producers_schedule %}
             <div class="container">
-            <table class="table">
-                      <thead>
+            <table class="table table-hover table-striped table-sm">
+                      <thead class="thead-dark">
                         <tr>
+
+                          <th>Producer Hired</th>
                           <th>Date Hired</th>
                           <th>Time Hired</th>
-                          <th>Available Date</th>
+                          <th>Duration</th>
                           </tr>
                       </thead>
                         <tbody>
                 {% for producer in producers_schedule %}
                 <tr>
+                  <td>{{producer.producer_name}}</td>
                   <td>{{ producer.hire_date }}</td>
                   <td>{{ producer.hire_time }}</td>
-                  <td>{{ producer.available_date }}</td>
+                  <td>{{producer.duration_days}} day(s)</td>
                 </tr>
                 {% endfor %}
 
                       </tbody>
                     </table>
                 </div>
+                {% else %}
+                <div class="containr">
+                  <p>Just Book on any day that you wish</p>
+                </div>
             {% endif %}
 
            <hr>
-           <br><br><br>
-         <h1 class="h3 text-center">Hire</h1>
+           <br>
+         <h1 class="h3 text-center">Hire Form</h1>
          <div class="container">
 
             <form method="POST">
                   {% csrf_token %}
 
                  <div class="form-row">
-                          <div class="form-group col-md-4 offset-2">
+                          <div class="form-group col-md-4 offset-4">
                              {{ form.as_p}}
                                <button type="submit" class="btn btn-primary ml-7" onclick="showAlert()">Hire</button>
                           </div>
@@ -104,7 +113,7 @@
            </script>
 
      </div>
-
+<!--
        <div class="container col-md-3">
            <div class="container">
 
@@ -114,7 +123,8 @@
                      some other info
                  </div>
            </div>
-       </div>
+       </div> -->
    </div>
+ </div>
  </div>
  {% endblock %}

@@ -1,11 +1,11 @@
 from django import forms
-from .models import Hire_Producer,StudioSessions
+from .models import HireProducer,StudioSessions
 
 
 class HireProducerForm(forms.ModelForm):
     class Meta:
-        model = Hire_Producer
-        fields = ['fullName','phoneNumber','producer_name','hire_date','hire_time','duration_days','duration_hrs']
+        model = HireProducer
+        fields = ['fullName','phoneNumber','producer_name','hire_date','hire_time','duration_days',]
         # fields = ['fullName','phoneNumber',]
 
     def __init__(self, *args, **kwargs):
@@ -21,12 +21,12 @@ class HireProducerForm(forms.ModelForm):
         self.fields['hire_time'].widget.attrs['placeholder'] = '00:00'
 
         self.fields['duration_days'].widget.attrs['class'] = 'form-control'
-        self.fields['duration_hrs'].widget.attrs['class'] = 'form-control'
+        # self.fields['duration_hrs'].widget.attrs['class'] = 'form-control'
 
 class StudioSessionForm(forms.ModelForm):
     class Meta:
         model = StudioSessions
-        fields=['fullName','phoneNumber','booked_as','start_date','starting_time']
+        fields=['fullName','phoneNumber','booked_as','start_date',]
         # fields = ['fullName','phoneNumber',]
     def __init__(self,*args,**kwargs):
         super(StudioSessionForm, self).__init__(*args,**kwargs)
@@ -38,5 +38,5 @@ class StudioSessionForm(forms.ModelForm):
 
         self.fields['booked_as'].widget.attrs['class'] = 'form-control'
 
-        self.fields['starting_time'].widget.attrs['class'] = 'form-control'
-        self.fields['starting_time'].widget.attrs['placeholder'] = '00:00'
+        # self.fields['starting_time'].widget.attrs['class'] = 'form-control'
+        # self.fields['starting_time'].widget.attrs['placeholder'] = '00:00'

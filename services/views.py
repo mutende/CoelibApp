@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from services.forms import HireProducerForm,StudioSessionForm
 from django.contrib import messages
 from django.contrib.auth.models import User
-from services.models import Hire_Producer
+from services.models import HireProducer
 
 def home(request):
 
@@ -26,21 +26,17 @@ def studio_session(request):
 
 def hire_producers(request):
     Users = User.objects.all()
+    number_of_producers = (User.objects.all().count())-1
+    print(number_of_producers)
     print(Users)
-    search_date = request.GET.get('doh')
-    search_producer = request.GET.get('available')
-    if search_producer == 'Admin':
-        messages.success(request, 'If you select admin you will not be helped, please select other options')
-    print(search_date)
-    print(search_producer)
 
     #search
-    producers_schedule = Hire_Producer.objects.all()
+    producers_schedule = HireProducer.objects.all()
     print(producers_schedule)
 
     form = HireProducerForm(request.POST or None)
     if form.is_valid():
         form.save()
         form = HireProducerForm()
-    context = {'form':form,'Users':Users,'producers_schedule':producers_schedule}
+    context = {'form':form,'Users':Users,'producers_schedule':producers_schedule, 'count':number_of_producers}
     return render(request, 'services/hire_producers.html', context)

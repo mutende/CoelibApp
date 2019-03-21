@@ -6,10 +6,10 @@ class StudioSessions(models.Model):
     phoneNumber = models.CharField(max_length=13)
     booked_as = models.CharField(max_length=20, choices=BOOK_AS_CHOICES, default='Other')
     start_date = models.CharField(max_length=100)
-    starting_time = models.CharField(max_length=100)
+    # starting_time = models.CharField(max_length=100)
 
 
-class Hire_Producer(models.Model):
+class HireProducer(models.Model):
 
 
     fullName = models.CharField(max_length=100)
@@ -18,5 +18,5 @@ class Hire_Producer(models.Model):
     hire_date = models.CharField(max_length=100)
     hire_time = models.CharField(max_length=100)
     duration_days = models.IntegerField(default=0)
-    duration_hrs = models.IntegerField(default=0)
-    available_date= models.CharField(max_length=100,blank=True, null=True)
+    # duration_hrs = models.IntegerField(default=0)
+    # available_date= models.CharField(max_length=100,blank=True, null=True)
