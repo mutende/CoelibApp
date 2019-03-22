@@ -10,13 +10,15 @@ class StudioSession(models.Model):
 
 
 class HireProducer(models.Model):
-
-
     fullName = models.CharField(max_length=100)
     phoneNumber = models.CharField(max_length=13)
     producer_name= models.CharField(max_length=100)
     hire_date = models.CharField(max_length=100)
     hire_time = models.CharField(max_length=100)
     duration_days = models.IntegerField(default=0)
-    # duration_hrs = models.IntegerField(default=0)
-    # available_date= models.CharField(max_length=100,blank=True, null=True)
+
+class Comment(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    comment = models.CharField(max_length=500)
+    comment_date = models.DateField(auto_now_add=True)

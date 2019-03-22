@@ -1,0 +1,53 @@
+{% extends 'services/base.html' %}
+
+{% block title %}
+<title>make a comment</title>
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<div class="container-fluid">
+   <div class="row">
+       <div class="container col-md-8 card-header">
+
+           <h1 class="h3 text-center"> Make a Comment</h1>
+              <hr>
+           <form method="POST">
+             <div>
+                 {% if messages%}
+                 {% for message in messages %}
+                   <div class="alert alert-warning alert-dismissable" role="alert">
+                     <button class="close" data-dismiss="alert">
+                       <small><sup>x</sup></small>
+                     </button>
+                     {{ message }}
+                   </div>
+                 {% endfor %}
+               {% endif%}
+
+
+               {% csrf_token %}
+               <div class="form-row">
+                        <div class="form-group col-md-4 offset-4">
+                        {{form.as_p}}
+                        <button type="submit" class="btn btn-primary" onclick="showAlert()">Submit</button>
+                        </div>
+                  </div>
+
+                </form>
+
+                <script>
+                    function showAlert(){
+                     alert('Thanks for talking ro us');
+                    }
+                </script>
+     </div>
+
+   </div>
+
+ </div>
+
+ {% endblock %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from services.models import HireProducer,StudioSession
+from services.models import HireProducer,StudioSession,Comment
 # Create your views here.
 
 
@@ -51,3 +51,14 @@ def studio_sessions(request):
     context = {'sessions_available':sessions_available}
 
     return render(request, 'newusers/studio_sessions.html', context)
+
+def read_comments(request):
+    comments = Comment.objects.all().order_by('-comment_date')
+    if(comments.count() < 1):
+        messages.success(request, 'Sorry there are no comments currently')
+    else:
+        count_comments = comments.count()
+        messages.success(request, 'There are ',count_comments, ' comments')
+
+    context = {'comments':comments, 'count_comments':count_comments}
+    return render(request, 'newusers/read_comments.html', context)

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from services.forms import HireProducerForm,StudioSessionForm
+from services.forms import HireProducerForm, StudioSessionForm, CommentForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from services.models import HireProducer
@@ -40,3 +40,11 @@ def hire_producers(request):
         form = HireProducerForm()
     context = {'form':form,'Users':Users,'producers_schedule':producers_schedule, 'count':number_of_producers}
     return render(request, 'services/hire_producers.html', context)
+
+def comment(request):
+    form = CommentForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        form = CommentForm()
+    context = {'form':form}
+    return render(request, 'services/make_a_comment.html', context)
