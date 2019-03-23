@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
 from services.forms import HireProducerForm, StudioSessionForm, CommentForm
-from django.contrib import messages
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from services.models import HireProducer
+from django.contrib import messages
+from datetime import datetime
 
 def home(request):
 
@@ -27,13 +28,13 @@ def studio_session(request):
 def hire_producers(request):
     Users = User.objects.all()
     number_of_producers = (User.objects.all().count())-1
-    print(number_of_producers)
-    print(Users)
+    #search for this month
+    year = datetime.now().year
+    month = datetime.now().month
+    today = datetime.now()
 
-    #search
-    producers_schedule = HireProducer.objects.all()
+    producers_schedule = HireProducer.objects.filter(hire_date__gte=today).filter(hire_date__year=year).filter(hire_date__month=month).order_by('-hire_date')
     print(producers_schedule)
-
     form = HireProducerForm(request.POST or None)
     if form.is_valid():
         form.save()

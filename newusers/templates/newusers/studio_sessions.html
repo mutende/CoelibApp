@@ -12,12 +12,12 @@
 
               <div class="form-row ml-4">
                 <div class="form-group col-md-3">
-                  <label for="datefrom">Date of Hire</label>
-                  <input type="date" class="form-control" id="datefrom"  name="from" width="100">
+                  <label for="datefrom">Date from:</label>
+                  <input type="date" class="form-control" id="datefrom"  name="from" width="100" required placeholder="yyy-mm-dd">
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="dateto">Select Producer</label>
-                    <input type="date" class="form-control" id="dateto"  name="to">
+                  <label for="dateto">Date to:</label>
+                    <input type="date" class="form-control" id="dateto"  name="to" required placeholder="yyy-mm-dd">
                 </div>
                 <div class="form-group col-md-3">
                     <!-- <label for="btn">Select Producer</label> -->
@@ -35,7 +35,6 @@
       <table class="table table-hover table-sm">
                 <thead class="thead-dark">
                   <tr>
-
                     <th>Client Name</th>
                     <th>Client phoneNumber</th>
                     <th>Booked Session As</th>
@@ -58,12 +57,12 @@
           {% else %}
           <div class="container">
             {% if messages%}
-            {% for message in messages %}
+            {% for msgs in messages %}
               <div class="alert alert-warning alert-dismissable" role="alert">
                 <button class="close" data-dismiss="alert">
                   <small><sup>x</sup></small>
                 </button>
-                {{ message }}
+                {{ msgs }}
               </div>
             {% endfor %}
           {% endif%}
