@@ -33,9 +33,13 @@ def hire_producers(request):
     month = datetime.now().month
     today = datetime.now()
 
+    choicesofAdmin = tuple(Users)
+    print('__________________________________')
+    print(choicesofAdmin)
+    print('__________________________________')
     producers_schedule = HireProducer.objects.filter(hire_date__gte=today).filter(hire_date__year=year).filter(hire_date__month=month).order_by('-hire_date')
     print(producers_schedule)
-    form = HireProducerForm(request.POST or None)
+    form = HireProducerForm(request.POST or None, initial={})
     if form.is_valid():
         form.save()
         form = HireProducerForm()

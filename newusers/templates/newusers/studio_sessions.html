@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <br><br><br>
 <div class="container">
     <h2 class="h5 gray-text text-left mb-4">Hello {{ user.username }}  you can view latest 5 studio sessions but still you can filter passed date</h2>
@@ -13,11 +14,11 @@
               <div class="form-row ml-4">
                 <div class="form-group col-md-3">
                   <label for="datefrom">Date from:</label>
-                  <input type="date" class="form-control" id="datefrom"  name="from" width="100" required placeholder="yyy-mm-dd">
+                  <input type="date" class="form-control" id="datefrom"  name="from" width="100" required readonly>
                 </div>
                 <div class="form-group col-md-3">
                   <label for="dateto">Date to:</label>
-                    <input type="date" class="form-control" id="dateto"  name="to" required placeholder="yyy-mm-dd">
+                    <input type="date" class="form-control" id="dateto"  name="to" required readonly>
                 </div>
                 <div class="form-group col-md-3">
                     <!-- <label for="btn">Select Producer</label> -->
@@ -57,12 +58,12 @@
           {% else %}
           <div class="container">
             {% if messages%}
-            {% for msgs in messages %}
+            {% for sessionmsgs in messages %}
               <div class="alert alert-warning alert-dismissable" role="alert">
                 <button class="close" data-dismiss="alert">
                   <small><sup>x</sup></small>
                 </button>
-                {{ msgs }}
+                {{ sessionmsgs }}
               </div>
             {% endfor %}
           {% endif%}
@@ -70,4 +71,15 @@
       {% endif %}
     </div>
 </div>
+{% else %}
+<br> <br><br><br>
+<div class="container mt-4 mb-4">
+
+    <div class="alert alert-danger" role="alert">
+      <p  class=" h5 text-center">Cannot Access page while logged out, click <a href="{% url 'producer_login'%}"> here </a> to login and continue</p>
+
+    </div>
+</div>
+<br> <br><br><br>
+{%endif%}
 {% endblock %}

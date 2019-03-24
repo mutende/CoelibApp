@@ -25,7 +25,7 @@ def p_login(request):
             messages.success(request, 'You have been logged in, WELCOME '+username+ '!')
             return redirect('producerpage')
         else:
-            messages.success(request, 'Error during login, please retry')
+            messages.success(request, 'Error during login, please retry with correct credentials')
             return redirect('producer_login')
     else:
         return render(request, 'newusers/p_login.html',{})

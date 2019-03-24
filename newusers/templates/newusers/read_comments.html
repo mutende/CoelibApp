@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <br><br><br>
 <div class="container">
     <h2 class="h5 gray-text text-left mb-4">Hello {{ user.username }}  you can view latest 10 raised comments or conserns from here</h2>
@@ -70,4 +71,15 @@
       {% endif %}
     </div>
 </div>
+{% else %}
+<br> <br><br><br>
+<div class="container mt-4 mb-4">
+
+    <div class="alert alert-danger" role="alert">
+      <p  class=" h5 text-center">Cannot Access page while logged out, click <a href="{% url 'producer_login'%}"> here </a> to login and continue</p>
+
+    </div>
+</div>
+<br> <br><br><br>
+{%endif%}
 {% endblock %}

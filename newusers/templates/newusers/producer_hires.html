@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <br><br><br>
 <div class="container">
     <h2 class="h5 gray-text text-left mb-4">Hello {{ user.username }}  you can view latest 5 hired producers but still you can filter within some period:</h2>
@@ -13,11 +14,11 @@
               <div class="form-row ml-4" style="margin-left:20px;">
                 <div class="form-group col-md-3">
                   <label for="datefrom">Date From</label>
-                  <input type="date" class="form-control" id="datefrom"  name="from" width="100" required placeholder="yyyy-mm-dd">
+                  <input type="date" class="form-control" id="datefrom"  name="from" width="100" required readonly>
                 </div>
                 <div class="form-group col-md-3">
                   <label for="dateto">Date To</label>
-                  <input type="date" class="form-control" id="dateto"  name="to" required placeholder="yyyy-mm-dd">
+                  <input type="date" class="form-control" id="dateto"  name="to" required readonly>
                 </div>
 
                 <!-- <div class="form-group col-md-3">
@@ -63,18 +64,18 @@
                 <thead class="thead-dark">
                   <tr>
 
-                    <th>Producer Hired</th>
-                    <th>Hired By</th>
+                    <!-- <th>Producer Hired</th> -->
+                    <th>Client Name</th>
                     <th>Contacts</th>
-                    <th>Date Hired</th>
-                    <th>Time Hired</th>
-                    <th>Duration</th>
+                    <th>Date to Hired</th>
+                    <th>Time to Hired</th>
+                    <th>Duration of Hire</th>
                     </tr>
                 </thead>
                   <tbody>
           {% for dates in fixed_dates %}
           <tr>
-            <td>{{dates.producer_name}}</td>
+            <!-- <td>{{dates.producer_name}}</td> -->
             <td>{{dates.fullName}}</td>
             <td>{{dates.phoneNumber}}</td>
             <td>{{ dates.hire_date }}</td>
@@ -102,4 +103,15 @@
       {% endif %}
     </div>
 </div>
+{% else %}
+<br> <br><br><br>
+<div class="container mt-4 mb-4">
+
+    <div class="alert alert-danger" role="alert">
+      <p  class=" h5 text-center">Cannot Access page while logged out, click <a href="{% url 'producer_login'%}"> here </a> to login and continue</p>
+
+    </div>
+</div>
+<br> <br><br><br>
+{%endif%}
 {% endblock %}

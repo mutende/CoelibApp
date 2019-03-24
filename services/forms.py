@@ -6,20 +6,20 @@ from django.forms import Textarea
 class HireProducerForm(forms.ModelForm):
     class Meta:
         model = HireProducer
-        fields = ['fullName','phoneNumber','producer_name','hire_date','hire_time','duration_days',]
+        fields = ['fullName','phoneNumber','hire_date','hire_time','duration_days',]
         # fields = ['fullName','phoneNumber',]
 
     def __init__(self, *args, **kwargs):
         super(HireProducerForm, self).__init__(*args, **kwargs)
         self.fields['fullName'].widget.attrs['class'] = 'form-control'
         self.fields['phoneNumber'].widget.attrs['class'] = 'form-control'
-        self.fields['producer_name'].widget.attrs['class'] = 'form-control'
+        # self.fields['producer_name'].widget.attrs['class'] = 'form-control'
 
         self.fields['hire_date'].widget.attrs['class'] = 'form-control'
-        self.fields['hire_date'].widget.attrs['placeholder'] = 'yyyy-mm-dd'
+        self.fields['hire_date'].widget.attrs['readonly']= True
 
         self.fields['hire_time'].widget.attrs['class'] = 'form-control'
-        self.fields['hire_time'].widget.attrs['placeholder'] = 'HH:MM'
+        self.fields['hire_time'].widget.attrs['readonly']= True
 
         self.fields['duration_days'].widget.attrs['class'] = 'form-control'
         # self.fields['duration_hrs'].widget.attrs['class'] = 'form-control'
@@ -35,7 +35,7 @@ class StudioSessionForm(forms.ModelForm):
         self.fields['phoneNumber'].widget.attrs['class'] = 'form-control'
 
         self.fields['start_date'].widget.attrs['class'] = 'form-control'
-        self.fields['start_date'].widget.attrs['placeholder'] = 'yyyy-mm-dd'
+        self.fields['start_date'].widget.attrs['readonly'] = True
 
         self.fields['booked_as'].widget.attrs['class'] = 'form-control'
 

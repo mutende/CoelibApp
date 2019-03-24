@@ -5,20 +5,32 @@
 {% endblock %}
 
 {% block content %}
-<br><br><br><br>
+{% if user.is_authenticated %}
+<br><br><br><br> <br><br><br><br>
 <div class="container">
   <div class="container">
     {% if messages%}
-    {% for message in messages %}
+    {% for notices in messages %}
       <div class="alert alert-warning alert-dismissable" role="alert">
         <button class="close" data-dismiss="alert">
           <small><sup>x</sup></small>
         </button>
-        {{ message }}
+        {{ notices }}
       </div>
     {% endfor %}
   {% endif%}
   </div>
     <h2 class="h5 gray-text text-center">Welcome {{ user.username }} </h2>
 </div>
+{% else %}
+<br> <br><br><br>
+<div class="container mt-4 mb-4">
+
+    <div class="alert alert-danger" role="alert">
+      <p  class=" h5 text-center">Cannot Access page while logged out, click <a href="{% url 'producer_login'%}"> here </a> to login and continue</p>
+
+    </div>
+</div>
+<br> <br><br><br>
+{%endif%}
 {% endblock %}

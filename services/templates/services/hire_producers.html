@@ -65,16 +65,16 @@
                       <thead class="thead-dark">
                         <tr>
 
-                          <th>Producer Hired</th>
-                          <th>Date Hired</th>
-                          <th>Time Hired</th>
+                          <!-- <th>Producer Hired</th> -->
+                          <th>Date</th>
+                          <th>Time</th>
                           <th>Duration</th>
                           </tr>
                       </thead>
                         <tbody>
                 {% for producer in producers_schedule %}
                 <tr>
-                  <td>{{producer.producer_name}}</td>
+                  <!-- <td>{{producer.producer_name}}</td> -->
                   <td>{{ producer.hire_date }}</td>
                   <td>{{ producer.hire_time }}</td>
                   <td>{{producer.duration_days}} day(s)</td>
@@ -127,4 +127,5 @@
    </div>
  </div>
  </div>
+
  {% endblock %}

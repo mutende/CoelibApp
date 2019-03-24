@@ -19,6 +19,15 @@
       <link rel="stylesheet" href="{% static 'OwlCarousel/css/owl.carousel.min.css'%}">
       <link rel="stylesheet" href="{% static 'OwlCarousel/css/owl.theme.default.min.css' %}">
 
+      <!-- datepicker -->
+      <link rel="stylesheet" href="{% static 'datepicker/css/jquery-ui.css'%}">
+
+      <!-- time picker -->
+      <link rel="stylesheet" href="{% static 'timepicker/css/mdtimepicker.css'%}">
+
+
+
+
 
        {% block title %}
        <title></title>
@@ -230,8 +239,10 @@
 
 
     <script type="text/javascript" src="{% static 'bootstrap/MDB/js/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'datepicker/js/jquery-ui.js' %}"></script>
+    <script type="text/javascript" src="{% static 'timepicker/js/mdtimepicker.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/MDB/js/popper.min.js' %}"></script>
-     <script type="text/javascript" src="{% static 'bootstrap/MDB/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap/MDB/js/bootstrap.min.js' %}"></script>
     <script type="text/javascript"  src="{%static 'OwlCarousel/js/owl.carousel.min.js' %}"></script>
 
 <script type="text/javascript">
@@ -261,4 +272,23 @@
           }
       })
   </script>
+  <script>
+       $(function() {
+          $( "#id_hire_date" ).datepicker({ minDate: 0, dateFormat: 'yy-mm-dd'});
+
+        });
+   </script>
+
+   <script>
+        $(function() {
+           $( "#id_start_date" ).datepicker({ minDate: 0, dateFormat: 'yy-mm-dd'});
+
+         });
+    </script>
+    <script>
+  $(document).ready(function(){
+    $('#id_hire_time').mdtimepicker({format: 'hh:mm'}); //Initializes the time picker
+  });
+</script>
+
 </body>

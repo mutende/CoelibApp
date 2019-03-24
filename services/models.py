@@ -12,7 +12,7 @@ class StudioSession(models.Model):
 class HireProducer(models.Model):
     fullName = models.CharField(max_length=100)
     phoneNumber = models.CharField(max_length=13)
-    producer_name= models.CharField(max_length=100)
+    # producer_name= models.CharField(max_length=100)
     hire_date = models.DateField(auto_now=False)
     hire_time = models.TimeField(auto_now=False)
     duration_days = models.IntegerField(default=0)
