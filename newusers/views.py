@@ -46,11 +46,11 @@ def hires(request):
     todate = request.GET.get('to')
 
     if fromdate == None or todate == None:
-         fixed_dates = HireProducer.objects.all()[:5]
+         fixed_dates = HireProducer.objects.all().order_by('-hire_date')[:5]
          fixed_date_count = HireProducer.objects.all().count()
          if fixed_date_count < 1:
              messages.success(request, 'There are no hired producer currently')
-         else:
+         elif fixed_date_count > 5:
             messages.success(request, 'There are '+ str(fixed_date_count) + ' hired producers but we are displaying the latest 5 hires')
     else:
         fromdate = datetime.strptime(fromdate, "%Y-%m-%d").date()
@@ -79,11 +79,11 @@ def studio_sessions(request):
 
     if sessions_from == None or sessions_to == None:
         count_sessions = StudioSession.objects.all().count()
-        sessions_available = StudioSession.objects.all()[:5]
+        sessions_available = StudioSession.objects.all().order_by('-start_date')[:5]
         if count_sessions < 1:
             messages.success(request, 'There are no available sessions currently')
-        else:
-            messages.success(request, 'There are a total of '+ str(count_sessions)+' but we are showing the latest 5')
+        elif count_sessions > 5:
+            messages.success(request, 'There are a total of '+ str(count_sessions)+' sessions but we are showing the latest 5')
     else:
         sessions_from = datetime.strptime(sessions_from, "%Y-%m-%d").date()
         sessions_to = datetime.strptime(sessions_to, "%Y-%m-%d").date()
@@ -100,11 +100,12 @@ def studio_sessions(request):
 
 def read_comments(request):
     comments = Comment.objects.all().order_by('-comment_date')[:10]
+    count_comments = Comment.objects.all().count()
     if(comments.count() < 1):
         messages.success(request, 'Sorry there are no comments currently')
-    else:
-        count_comments = str(comments.count())
-        messages.success(request, 'There are '+ count_comments + ' comments')
+    elif count_comments > 10:
+        count_comments = str(count_comments)
+        messages.success(request, 'There are '+ count_comments + ' comments but we are showing the 10 latest comments')
 
     context = {'comments':comments, 'count_comments':count_comments}
     return render(request, 'newusers/read_comments.html', context)

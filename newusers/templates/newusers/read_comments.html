@@ -29,6 +29,16 @@
 
 
     </form> -->
+    {% if messages%}
+    {% for cmsg in messages %}
+      <div class="alert alert-warning alert-dismissable" role="alert">
+        <button class="close" data-dismiss="alert">
+          <small><sup>x</sup></small>
+        </button>
+          {{ cmsg }}
+      </div>
+    {% endfor %}
+  {% endif%}
     <div class="container">
 
       {% if comments %}
@@ -58,12 +68,12 @@
           {% else %}
           <div class="container">
             {% if messages%}
-            {% for message in messages %}
+            {% for cmsg in messages %}
               <div class="alert alert-warning alert-dismissable" role="alert">
                 <button class="close" data-dismiss="alert">
                   <small><sup>x</sup></small>
                 </button>
-                {{ message }}
+                No comments currently
               </div>
             {% endfor %}
           {% endif%}

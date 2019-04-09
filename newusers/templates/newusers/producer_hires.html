@@ -14,11 +14,11 @@
               <div class="form-row ml-4" style="margin-left:20px;">
                 <div class="form-group col-md-3">
                   <label for="datefrom">Date From</label>
-                  <input type="date" class="form-control" id="datefrom"  name="from" width="100" required readonly>
+                  <input type="text" class="form-control" id="datefrom"  name="from" width="100" required readonly>
                 </div>
                 <div class="form-group col-md-3">
                   <label for="dateto">Date To</label>
-                  <input type="date" class="form-control" id="dateto"  name="to" required readonly>
+                  <input type="text" class="form-control" id="dateto"  name="to" required readonly>
                 </div>
 
                 <!-- <div class="form-group col-md-3">
@@ -46,12 +46,12 @@
     </form>
     <div class="containr">
       {% if messages%}
-      {% for msg in messages %}
+      {% for hmsg in messages %}
         <div class="alert alert-warning alert-dismissable" role="alert">
           <button class="close" data-dismiss="alert">
             <small><sup>x</sup></small>
           </button>
-          {{ msg }}
+          {{ hmsg }}
         </div>
       {% endfor %}
     {% endif%}
