@@ -1,47 +1,48 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> {% load static %}
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{% static 'bootstrap/MDB/css/bootstrap.min.css' %}" type="text/css" >
+    <link rel="stylesheet" href="{% static 'bootstrap/MDB/css/bootstrap.min.css' %}" type="text/css">
     <!-- Material Design Bootstrap - type=""-->
-    <link href="{% static 'bootstrap/MDB/css/mdb.min.css' %}" type= "text/css" rel="stylesheet">
+    <link href="{% static 'bootstrap/MDB/css/mdb.min.css' %}" type="text/css" rel="stylesheet">
     <!--  font awesome cdn-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- local css -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-      {% block title %}
-       <title></title>
-      {% endblock %}
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static 'images/applogo.PNG' %}" type="image/x-icon"> {% block title %}
+    <title></title>
+    {% endblock %}
 
-  </head>
+</head>
+
 <body>
 
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <!-- url as named in the view (url pattern)-->
-          {% if user.is_authenticated %}
-              <a class="navbar-brand" href="{% url 'producerpage' %}">
+        {% if user.is_authenticated %}
+        <a class="navbar-brand" href="{% url 'producerpage' %}">
                     Coelib Studio Management
               </a>
 
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
 
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                  <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto">
 
                 <li class="nav-item">
-                  <p class="nav-link disabled white-text mr-5"> Welcome: {{ user.username }}</p>
+                    <p class="nav-link disabled white-text mr-5"> Welcome: {{ user.username }}</p>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'services' %} ">Services</a>
+                    <a class="nav-link" href="{% url 'services' %} ">Services</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -49,20 +50,20 @@
                       View
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="{% url 'read_comments' %}">Comments</a>
-                      <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'hires' %}">Hires</a>
+                        <a class="dropdown-item" href="{% url 'read_comments' %}">Comments</a>
                         <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="{% url 'studio_sessions' %}">Studio Sessions</a>
+                        <a class="dropdown-item" href="{% url 'hires' %}">Hires</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'studio_sessions' %}">Studio Sessions</a>
 
 
                     </div>
-                  </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                 </li>
 
-            {% else %}
+                {% else %}
 
                 <a class="navbar-brand" href="{% url 'index' %}">
                       Coelib Studio Management
@@ -75,97 +76,92 @@
 
                     <ul class="navbar-nav ml-auto">
 
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'services' %} ">Services</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'producer_login' %}">Login</a>
-                </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'services' %} ">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'producer_login' %}">Login</a>
+                        </li>
 
-          {% endif %}
-      </ul>
+                        {% endif %}
+                    </ul>
 
-    </div>
-  </nav>
+                </div>
+    </nav>
     <br><br>
 
     <div>
 
-    {% block content %}
-
-
-
-    {% endblock %}
+        {% block content %} {% endblock %}
 
         <div>
             <footer class="page-footer font-small unique-color-dark fixed-bottom">
-    <a href="aboutus"></a>
+                <a href="aboutus"></a>
 
-    <div class="bg-primary">
-        <a name="aboutus"></a>
-        <div class="container">
+                <div class="bg-primary">
+                    <a name="aboutus"></a>
+                    <div class="container">
 
-            <!-- Grid row-->
-            <div class="row py-4 d-flex align-items-center">
+                        <!-- Grid row-->
+                        <div class="row py-4 d-flex align-items-center">
 
-                <!-- Grid column -->
-                <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-                    <h5 class="mb-0"><b>Let us connect and share our music</b></h5>
+                            <!-- Grid column -->
+                            <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                                <h5 class="mb-0"><b>Let us connect and share our music</b></h5>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+                                <!-- Facebook -->
+                                <a href="" class="fb-ic">
+                                    <i class="fa fa-facebook white-text mr-4"> </i>
+                                </a>
+                                <!-- Twitter -->
+                                <a href="" class="tw-ic">
+                                    <i class="fa fa-twitter white-text mr-4"> </i>
+                                </a>
+                                <!-- Google +-->
+                                <a href="" class="gplus-ic">
+                                    <i class="fa fa-google-plus white-text mr-4"> </i>
+                                </a>
+                                <!--Linkedin -->
+                                <a class="li-ic">
+                                    <i class="fa fa-linkedin white-text mr-4"> </i>
+                                </a>
+                                <!--Instagram-->
+                                <a href="" class="ins-ic">
+                                    <i class="fa fa-instagram white-text"> </i>
+                                </a>
+
+                            </div>
+                            <!-- Grid column -->
+
+                        </div>
+                        <!-- Grid row-->
+
+                    </div>
                 </div>
-                <!-- Grid column -->
 
-                <!-- Grid column -->
-                <div class="col-md-6 col-lg-7 text-center text-md-right">
 
-                    <!-- Facebook -->
-                    <a href="" class="fb-ic">
-                        <i class="fa fa-facebook white-text mr-4"> </i>
-                    </a>
-                    <!-- Twitter -->
-                    <a href="" class="tw-ic">
-                        <i class="fa fa-twitter white-text mr-4"> </i>
-                    </a>
-                    <!-- Google +-->
-                    <a href="" class="gplus-ic">
-                        <i class="fa fa-google-plus white-text mr-4"> </i>
-                    </a>
-                    <!--Linkedin -->
-                    <a class="li-ic">
-                        <i class="fa fa-linkedin white-text mr-4"> </i>
-                    </a>
-                    <!--Instagram-->
-                    <a href="" class="ins-ic">
-                        <i class="fa fa-instagram white-text"> </i>
-                    </a>
 
+                <!-- Copyright -->
+                <div class="footer-copyright text-center py-3">© Copyright:
+                    <a href="{% url 'index' %}">Coelib studio</a>
                 </div>
-                <!-- Grid column -->
+                <!-- Copyright -->
 
-            </div>
-            <!-- Grid row-->
-
-        </div>
-    </div>
-
-
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">©
-        Copyright:
-        <a href="{% url 'index' %}">Coelib studio</a>
-    </div>
-    <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
+            </footer>
+            <!-- Footer -->
         </div>
 
     </div>
 
     <script type="text/javascript" src="{% static 'bootstrap/MDB/js/jquery-3.3.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/MDB/js/popper.min.js' %}"></script>
-     <script type="text/javascript" src="{% static 'bootstrap/MDB/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap/MDB/js/bootstrap.min.js' %}"></script>
 </body>
