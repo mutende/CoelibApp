@@ -15,10 +15,11 @@ margin-bottom: 47px;
 
 #producer-login-card{
     margin-top: 23px;
+    margin-left: 250px;
 }
 
 /*  background slider css */
-.load{
+/* .load{
     animation: slide 2s;
 }
 
@@ -87,7 +88,7 @@ text-align:center;
         background-image: url('../images/studio-image5.jpg');
     }
 }
-
+ */
 
 
 /* General styling */

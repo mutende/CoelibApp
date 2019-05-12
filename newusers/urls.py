@@ -9,9 +9,10 @@ urlpatterns = [
     path('producerpage/', views.producer, name="producerpage"),
     path('logout/', views.logout_user, name='logout'),
     path('services/', include('services.urls')),
-    path('hires/', views.hires, name="hires"),
-    path('sessions/', views.studio_sessions, name="studio_sessions"),
+    path('music/session', views.music_production_sessions, name="music_session"),
+    path('studio/sessions/', views.studio_sessions, name="studio_sessions"),
     path('readcomments/', views.read_comments, name='read_comments'),
+    path('music/classes/', views.enrolled_students, name="music_classes"),
 
 
 

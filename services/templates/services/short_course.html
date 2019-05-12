@@ -1,0 +1,51 @@
+{% extends 'services/base.html' %}
+
+{% block title %}
+<title>  Coelib Studio | Book-Session</title>
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<div class="container-fluid">
+   <div class="row">
+       <div class="container col-md-8 card-header">
+               <h1 class=" h1 text-center">Enroll to Short Courses</h1>
+           <hr>
+            <p class="text-sm-left">Hello dear customer, we wish to appreciate the trust you have in our works for choosing to work with us, our studio offer different services you can
+                <a href="{% url 'services' %}"> click here </a> to see them  an select accordingly.</p> <p class="text-sm-left"> At this page we allow our customers to enroll for short courses
+           that we offer. </p><p class="text-sm-left">If you have some complain or comments towards either of them just <a href="{% url 'comment' %}"> click here </a> to raise your concern, otherwise
+                good luck
+            </p>
+           <hr>
+           <h1 class="h3 text-center"> Enroll to a Short Course</h1>
+
+           <form method="POST" action="{% url 'short_course' %}">
+           <div>               
+
+               {% csrf_token %}
+               <div class="form-row">
+                        <div class="form-group col-md-4 offset-4">
+                        {{form.as_p}}
+                        <button type="submit" class="btn btn-primary" onclick="showAlert()">Book</button>
+                        </div>
+                  </div>
+
+                </form>
+
+                <script>
+                    function showAlert(){
+                     alert('Thank you, you will be Contacted');
+                    }
+                </script>
+     </div>
+
+
+
+   </div>
+
+ </div>
+
+ {% endblock %}

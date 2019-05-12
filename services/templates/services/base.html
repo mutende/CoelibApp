@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <!-- owl Carousel-->
-    <link rel="stylesheet" href="{% static 'OwlCarousel/css/owl.carousel.min.css'%}">
-    <link rel="stylesheet" href="{% static 'OwlCarousel/css/owl.theme.default.min.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'OwlCarousel/css/owl.carousel.min.css'%}"> {% endcomment %}
+    {% comment %} <link rel="stylesheet" href="{% static 'OwlCarousel/css/owl.theme.default.min.css' %}"> {% endcomment %}
 
     <!-- datepicker -->
     <link rel="stylesheet" href="{% static 'datepicker/css/jquery-ui.css'%}">
@@ -31,11 +31,11 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top mb-15">
+    <nav class="navbar navbar-expand-lg navbar-dark unique-color-dark fixed-top mb-5">
         <!-- url as named in the view (url pattern)-->
         {% if user.is_authenticated %}
-        <a class="navbar-brand" href="{% url 'producerpage' %}">
-                  Coelib Studio Management
+        <a class="navbar-brand" href="{% url 'index' %}">
+                  Coelib Studio
             </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,32 +47,36 @@
             <ul class="navbar-nav ml-auto">
 
                 <li class="nav-item">
-                    <p class="nav-link disabled white-text mr-5"> Welcome: {{ user.username }}</p>
+                    <a class="nav-link disabled text-success mr-3"> Welcome: {{ user.username }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'services' %} ">Services</a>
-                </li>
+          <a class="nav-link" href="{% url 'producerpage' %}">Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'services' %} ">Services</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'read_comments' %}">Comments</a>
+        </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    View
-                  </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'read_comments' %}">Comments</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url 'hires' %}">Hires</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url 'studio_sessions' %}">Studio Sessions</a>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'music_session' %}">Music Production</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'music_classes' %}">Enrollment</a>
+        </li>
 
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'studio_sessions' %}">Studio Sessions</a>
+        </li>
 
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
                 {% else %}
                 <a class="navbar-brand" href="{% url 'index' %}">
-                    Coelib Studio Management
+                    Coelib Studio
               </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,6 +84,9 @@
               </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
+                     <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">Home</a>
+                        </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'services' %}">Services</a>
@@ -94,7 +101,7 @@
     </nav>
     <br><br><br> {% block content %} {% endblock %}
 
-    <div>
+ 
         <footer class="page-footer font-small unique-color-dark">
             <a href="aboutus"></a>
 
@@ -156,9 +163,9 @@
 
         </footer>
         <!-- Footer -->
-    </div>
 
-    </div>
+
+
 
 
 
@@ -167,7 +174,7 @@
     <script type="text/javascript" src="{% static 'timepicker/js/mdtimepicker.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/MDB/js/popper.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/MDB/js/bootstrap.min.js' %}"></script>
-    <script type="text/javascript" src="{%static 'OwlCarousel/js/owl.carousel.min.js' %}"></script>
+    {% comment %} <script type="text/javascript" src="{%static 'OwlCarousel/js/owl.carousel.min.js' %}"></script> {% endcomment %}
 
     <script type="text/javascript">
         $('.owl-carousel').owlCarousel({
@@ -198,7 +205,7 @@
     </script>
     <script>
         $(function() {
-            $("#id_hire_date").datepicker({
+            $("#id_end_date").datepicker({
                 minDate: 0,
                 dateFormat: 'yy-mm-dd'
             });

@@ -1,0 +1,77 @@
+{% extends 'services/base.html' %}
+
+{% block title %}
+<title>  Coelib Studio | Book-Session </title>
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<div class="container-fluid">
+   <div class="row">
+       <div class="container col-md-8 card-header">
+               <h1 class=" h1 text-center">Book Music Production session</h1>
+           <hr>
+            <p class="text-sm-left">Hello dear customer, we wish to appreciate the trust you have in our works for choosing to work with us, our studio offer different services you can
+                <a href="{% url 'services' %}"> click here </a> to see them  an select accordingly.</p> <p class="text-sm-left"> At this page we allow our customers to book sessions with our studio
+           for Music Production. </p><p class="text-sm-left">If you have some complain or comments towards either of them just <a href="{% url 'comment' %}"> click here </a> to raise your concern, otherwise
+                you can continue with booking process.
+            </p>
+           <hr>
+           <h1 class="h3 text-center" action="music_production"> Book Session</h1>
+
+           <form method="POST">
+             <div>
+                 {% if messages%}
+                 {% for message in messages %}
+                   <div class="alert alert-warning alert-dismissable" role="alert">
+                     <button class="close" data-dismiss="alert">
+                       <small><sup>x</sup></small>
+                     </button>
+                     {{ message }}
+                   </div>
+                 {% endfor %}
+               {% endif%}
+
+
+               {% csrf_token %}
+               <div class="form-row">
+                        <div class="form-group col-md-4 offset-4">
+                        {{form.as_p}}
+                        <button type="submit" class="btn btn-primary" onclick="showAlert()">Book</button>
+                        </div>
+                  </div>
+
+                </form>
+
+                <script>
+                    function showAlert(){
+                     alert('Thank you, you will be Contacted');
+                    }
+                </script>
+     </div>
+
+       <!-- <div class="container col-md-4">
+           <div class="container">
+
+                <div class="card-body">
+                   <h3 class="text-center h3">
+                       Notifications and Updates
+                   </h3>
+               Our producers.
+               some other info
+
+           </div>
+
+           </div>
+
+
+       </div> -->
+
+   </div>
+
+ </div>
+
+ {% endblock %}

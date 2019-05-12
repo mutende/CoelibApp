@@ -1,25 +1,40 @@
 {% extends 'newusers/base.html' %}
 
 {% block title %}
-    <title> check studio sessions</title>
+    <title> Coelib Studio | Producer-Panel</title>
 {% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
 <br><br><br>
 <div class="container">
-    <h2 class="h5 gray-text text-left mb-4">Hello {{ user.username }}  you can view latest 5 studio sessions but still you can filter passed date</h2>
-    <form method="GET" action="{% url 'studio_sessions' %}">
+    <h2 class="h5 gray-text text-left mb-4">Hello {{ user.username }}  you can view latest 5 records  but still you can filter within some period:</h2>
+    <form method="GET" action="{% url 'music_session' %}">
 
-              <div class="form-row ml-4">
+              <div class="form-row ml-4" style="margin-left:20px;">
                 <div class="form-group col-md-3">
-                  <label for="datefrom">Date from:</label>
+                  <label for="datefrom">Date From</label>
                   <input type="text" class="form-control" id="datefrom"  name="from" width="100" required readonly>
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="dateto">Date to:</label>
-                    <input type="text" class="form-control" id="dateto"  name="to" required readonly>
+                  <label for="dateto">Date To</label>
+                  <input type="text" class="form-control" id="dateto"  name="to" required readonly>
                 </div>
+
+                <!-- <div class="form-group col-md-3">
+                  <label for="producer">Select Producer</label>
+                <select class="form-control text-center" name="producerSearch" id="producer">
+                    <option value="hakuna" selected> --NONE-- </option>
+                  {% if Users %}
+                    {% for users in Users%}
+
+                        <option> {{users}} </option>
+
+                    {% endfor %}
+                  {% endif %}
+                </select>
+                </div> -->
+
                 <div class="form-group col-md-3">
                     <!-- <label for="btn">Select Producer</label> -->
                     <input type="submit" class="btn btn-primary mt-4" id="btn"  value="Search" height="30">
@@ -29,40 +44,46 @@
 
 
     </form>
+    
     <div class="container">
 
       {% if sessions_available %}
       <div class="container">
-      <div class="container">
-            {% if messages%}
-            {% for sessionmsgs in messages %}
-              <div class="alert alert-warning alert-dismissable" role="alert">
-                <button class="close" data-dismiss="alert">
-                  <small><sup>x</sup></small>
-                </button>
-                {{ sessionmsgs }}
-              </div>
-            {% endfor %}
-          {% endif%}
+      <div class="containr">
+      {% if messages%}
+      {% for musicmsg in messages %}
+        <div class="alert alert-warning alert-dismissable" role="alert">
+          <button class="close" data-dismiss="alert">
+            <small><sup>x</sup></small>
+          </button>
+          {{ musicmsg }}
+        </div>
+      {% endfor %}
+    {% endif%}
+    </div>
       <table class="table table-hover table-sm">
                 <thead class="thead-dark">
                   <tr>
+
+                   
                     <th>Name</th>
                     <th>Phone Number</th>
-                    <th>Email</th>
-                    <th>Booked As</th>
+                    <th>email</th>
+                    <th>Booked as</th>
                     <th>Start</th>
-                    <th>End </th>
+                    <th>End</th>
+                    
                     </tr>
                 </thead>
                   <tbody>
           {% for session in sessions_available %}
           <tr>
+            <!-- <td>{{dates.producer_name}}</td> -->
             <td>{{session.full_name}}</td>
-            <td>{{session.phone_number }}</td>
-            <td>{{session.email}}</td>
+            <td>{{session.phone_number}}</td>
+            <td>{{session.email }}</td>
             <td>{{session.booked_as }}</td>
-            <td>{{session.start_date}}</td>
+            <td>{{session.start_date }}</td>
             <td>{{session.end_date}}</td>
           </tr>
           {% endfor %}
@@ -71,14 +92,14 @@
               </table>
           </div>
           {% else %}
-          <div class="container">
+          <div class="containr">
             {% if messages%}
-            {% for sessionmsgs in messages %}
+            {% for message in messages %}
               <div class="alert alert-warning alert-dismissable" role="alert">
                 <button class="close" data-dismiss="alert">
                   <small><sup>x</sup></small>
                 </button>
-                {{ sessionmsgs }}
+                {{ message }}
               </div>
             {% endfor %}
           {% endif%}

@@ -1,7 +1,7 @@
 {% extends 'services/base.html' %}
 
 {% block title %}
-<title> services </title>
+<title>Coelib Studio | Services </title>
 {% endblock %}
 
 {% block content %}
@@ -25,42 +25,39 @@
                  {% load static %}
                 <img class="card-img-top" src="{% static 'images/studio-image6.jpg'%}" alt="Img">
             <p class="lead">
-               some description..
-                link musicians to producers within our studios
+               We have experienced producers who will let you have booming beats for your lyrics. We have the best concerning music production
             </p>
             </div>
-            <a class="btn btn-primary" href="{% url 'studio_session' %}">Book Session for the Service</a>
+            <a class="btn btn-primary" href="{% url 'music_production' %}">Proceed</a>
         </div>
 
 
             <div class="col-md-3 card mb-15 mr-2 mt-3">
             <div class="red-text text-center mt-2">
-                <h3 class="font-weight-bold">Book Studio Session</h3>
+                <h3 class="font-weight-bold">Studio Session</h3>
             </div>
             <div class="card-body">
                 <img class="card-img-top" src="{% static 'images/studio-image7.jpg' %}" alt="Img">
                 <p class="lead">
-                    some description...
-                    This is for all who need to use equipments within our studio. Both Producers and musician
-
+                     Use our quality equipments by just bookin session to complete your projects with guidance and higly experienced staff.
                 </p> <br>
             </div>
-                 <a class="btn btn-primary" href="{% url 'studio_session' %}">Book Session for the Service</a>
+                 <a class="btn btn-primary" href="{% url 'studio_session' %}">Proceed</a>
         </div>
 
 
          <div class="col-md-3 card mb-15 mt-3">
             <div class="red-text text-center mt-2">
-                <h3 class="font-weight-bold">Hire Producers</h3>
+                <h3 class="font-weight-bold">Short Courses</h3>
             </div>
             <div class="card-body">
                 <img class="card-img-top" src="{% static 'images/studio-image8.jpg' %}" alt="Img">
                 <p class="lead">
-                    some description..
-                    Other studios who wish to get services from our producers
+                   We offer short music courses practically from experienced staffs and quality instruments</p>
+          
                 </p> <br>
             </div>
-                 <a class="btn btn-primary" href="{% url 'hire_producers' %}">Book Session for the Service</a>
+                 <a class="btn btn-primary" href="{% url 'short_course' %}">Proceed</a>
         </div>
 
 
@@ -68,18 +65,18 @@
 </div>
 
     <!--owl carousel-->
-    <div class="owl-carousel owl-theme mt-10" style="margin-top:60px;">
-                        <div class="item"><h6 class="font-weight-bold text-center">Music Production</h6><a href="{% url 'studio_session' %}"><img alt="image" class="img-fluid" src="{% static 'images/studio-image6.jpg' %}"></a></div>
-                        <div class="item"><h6 class="font-weight-bold text-center">Book session</h6><a href="{% url 'studio_session' %}"><img alt="image" class="img-fluid" src="{% static 'images/studio-image7.jpg' %}"></a></div>
-                        <div class="item"><h6 class="font-weight-bold text-center">Hire Producers</h6><a href="{% url 'hire_producers' %}"><img alt="image" class="img-fluid" src="{% static 'images/studio-image8.jpg' %}"></a></div>
-                         <!--<div class="item"><h6 class="font-weight-bold text-center">Just Some Session</h6><a href="{% url 'hire_producers' %}"><img alt="image" class="img-fluid" src="{% static 'images/studio-image9.jpeg' %}"></a></div>-->
+    {% comment %} <div class="owl-carousel owl-theme mt-10" style="margin-top:60px;">
+                        <div class="item"><h6 class="font-weight-bold text-center">Music Production</h6><a href=""><img alt="image" class="img-fluid" src="{% static 'images/studio-image6.jpg' %}"></a></div>
+                        <div class="item"><h6 class="font-weight-bold text-center">Book session</h6><a href=""><img alt="image" class="img-fluid" src="{% static 'images/studio-image7.jpg' %}"></a></div>
+                        <div class="item"><h6 class="font-weight-bold text-center">Hire Producers</h6><a href=""><img alt="image" class="img-fluid" src="{% static 'images/studio-image8.jpg' %}"></a></div> {% endcomment %}
+                         <!--<div class="item"><h6 class="font-weight-bold text-center">Just Some Session</h6><a href=""><img alt="image" class="img-fluid" src="{% static 'images/studio-image9.jpeg' %}"></a></div>-->
 
 
-                    </div>
+                    {% comment %} </div> {% endcomment %}
     <!--end of owl-->
 
-<div class="container">
+{% comment %} <div class="container">
 
-</div>
+</div> {% endcomment %}
 </div>
 {% endblock %}

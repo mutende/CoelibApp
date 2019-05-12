@@ -1,7 +1,6 @@
-from services.forms import HireProducerForm, StudioSessionForm, CommentForm
+from services.forms import Short_CourseForm, Music_ProductionForm, CommentForm,Studio_SessionForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from services.models import HireProducer
 from django.contrib import messages
 from datetime import datetime
 
@@ -15,36 +14,31 @@ def services(request):
     return render(request, 'services/services.html', {})
 
 
-def studio_session(request):
-    form = StudioSessionForm(request.POST or None)
+def music_production(request):
+    form = Music_ProductionForm(request.POST or None)
     if form.is_valid():
         form.save()
-        form = StudioSessionForm()
+        form = Music_ProductionForm()
 
     context = {'form':form}
-    return render(request, 'services/studio_session.html', context)
+    return render(request, 'services/music_production.html', context)
 
 
-def hire_producers(request):
-    Users = User.objects.all()
-    number_of_producers = (User.objects.all().count())-1
-    #search for this month
-    year = datetime.now().year
-    month = datetime.now().month
-    today = datetime.now()
-
-    choicesofAdmin = tuple(Users)
-    print('__________________________________')
-    print(choicesofAdmin)
-    print('__________________________________')
-    producers_schedule = HireProducer.objects.filter(hire_date__gte=today).filter(hire_date__year=year).filter(hire_date__month=month).order_by('-hire_date')
-    print(producers_schedule)
-    form = HireProducerForm(request.POST or None, initial={})
+def short_course(request):
+    form = Short_CourseForm(request.POST or None)
     if form.is_valid():
         form.save()
-        form = HireProducerForm()
-    context = {'form':form,'Users':Users,'producers_schedule':producers_schedule, 'count':number_of_producers}
-    return render(request, 'services/hire_producers.html', context)
+        form = Short_CourseForm()
+    context = {'form':form}
+    return render(request, 'services/short_course.html',context)
+
+def studio_session(request):
+    form = Studio_SessionForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        form = Studio_SessionForm()
+    context = {'form':form}
+    return render(request, 'services/studio_session.html',context)
 
 def comment(request):
     form = CommentForm(request.POST or None)

@@ -1,21 +1,38 @@
 from django.db import models
 
-class StudioSession(models.Model):
-    BOOK_AS_CHOICES = (('Producer','Producer'),('Other','Other'))
-    fullName = models.CharField(max_length=100)
-    phoneNumber = models.CharField(max_length=13)
-    booked_as = models.CharField(max_length=20, choices=BOOK_AS_CHOICES, default='Other')
+class Music_Production(models.Model):
+    class Meta:
+        verbose_name_plural = 'Booked Music Production Sessions'
+    BOOK_AS_CHOICES = (('Producer','Producer'),('Artist','Artist'))
+    full_name = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=13)
+    email = models.EmailField(max_length=100)
+    booked_as = models.CharField(max_length=20, choices=BOOK_AS_CHOICES, default='Artist')
     start_date = models.DateField(auto_now=False)
-    # starting_time = models.CharField(max_length=100)
+    end_date = models.DateField(auto_now=False)
 
+class Studio_Session(models.Model):
+    class Meta:
+        verbose_name_plural = 'Booked Studio Sessions'
 
-class HireProducer(models.Model):
-    fullName = models.CharField(max_length=100)
-    phoneNumber = models.CharField(max_length=13)
-    # producer_name= models.CharField(max_length=100)
-    hire_date = models.DateField(auto_now=False)
-    hire_time = models.TimeField(auto_now=False)
-    duration_days = models.IntegerField(default=0)
+    full_name = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=13)
+    email = models.EmailField(max_length=100)
+    booked_as = models.CharField(max_length=8, default='Producer')
+    start_date = models.DateField(auto_now=False)
+    end_date = models.DateField(auto_now=False)
+
+class Short_Course(models.Model):
+    class Meta:
+        verbose_name_plural = 'Enrollment For Short Courses'
+
+    CHOICES = (('Music Production','Music Production'),('Instruments','Instruments'))
+    full_name = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=13)
+    email = models.EmailField(max_length=100)
+    course = models.CharField(max_length=20, choices=CHOICES, default='Music Production')
+    start_date = models.DateField(auto_now=False)
+    end_date = models.DateField(auto_now=False)
 
 class Comment(models.Model):
     name = models.CharField(max_length=100)

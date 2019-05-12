@@ -1,46 +1,74 @@
 from django import forms
-from .models import HireProducer,StudioSession,Comment
+from .models import Short_Course,Music_Production,Comment,Studio_Session
 from django.forms import Textarea
 
 
-class HireProducerForm(forms.ModelForm):
+class Studio_SessionForm(forms.ModelForm):
     class Meta:
-        model = HireProducer
-        fields = ['fullName','phoneNumber','hire_date','hire_time','duration_days',]
+        model = Studio_Session
+        fields = ['full_name','phone_number','email','booked_as','start_date','end_date',]
         # fields = ['fullName','phoneNumber',]
 
     def __init__(self, *args, **kwargs):
-        super(HireProducerForm, self).__init__(*args, **kwargs)
-        self.fields['fullName'].widget.attrs['class'] = 'form-control'
-        self.fields['phoneNumber'].widget.attrs['class'] = 'form-control'
-        # self.fields['producer_name'].widget.attrs['class'] = 'form-control'
+        super(Studio_SessionForm, self).__init__(*args, **kwargs)
+        self.fields['full_name'].widget.attrs['class'] = 'form-control'
 
-        self.fields['hire_date'].widget.attrs['class'] = 'form-control'
-        self.fields['hire_date'].widget.attrs['readonly']= True
+        self.fields['phone_number'].widget.attrs['class'] = 'form-control'
+       
+        self.fields['email'].widget.attrs['class'] = 'form-control'
 
-        self.fields['hire_time'].widget.attrs['class'] = 'form-control'
-        self.fields['hire_time'].widget.attrs['readonly']= True
+        self.fields['booked_as'].widget.attrs['readonly']= True
+        self.fields['booked_as'].widget.attrs['class'] = 'form-control'
 
-        self.fields['duration_days'].widget.attrs['class'] = 'form-control'
-        # self.fields['duration_hrs'].widget.attrs['class'] = 'form-control'
+        self.fields['end_date'].widget.attrs['class'] = 'form-control'
+        self.fields['end_date'].widget.attrs['readonly']= True
 
-class StudioSessionForm(forms.ModelForm):
+        self.fields['start_date'].widget.attrs['class'] = 'form-control'
+        self.fields['start_date'].widget.attrs['readonly']= True
+
+
+
+
+class Music_ProductionForm(forms.ModelForm):
     class Meta:
-        model = StudioSession
-        fields=['fullName','phoneNumber','booked_as','start_date',]
+        model = Music_Production
+        fields=['full_name','phone_number','email','booked_as','start_date','end_date']
         # fields = ['fullName','phoneNumber',]
     def __init__(self,*args,**kwargs):
-        super(StudioSessionForm, self).__init__(*args,**kwargs)
-        self.fields['fullName'].widget.attrs['class'] = 'form-control'
-        self.fields['phoneNumber'].widget.attrs['class'] = 'form-control'
+        super(Music_ProductionForm, self).__init__(*args,**kwargs)
+        self.fields['full_name'].widget.attrs['class'] = 'form-control'
+
+        self.fields['phone_number'].widget.attrs['class'] = 'form-control'
+
+        self.fields['email'].widget.attrs['class'] = 'form-control'
 
         self.fields['start_date'].widget.attrs['class'] = 'form-control'
         self.fields['start_date'].widget.attrs['readonly'] = True
 
+        self.fields['end_date'].widget.attrs['class'] = 'form-control'
+        self.fields['end_date'].widget.attrs['readonly'] = True
+
         self.fields['booked_as'].widget.attrs['class'] = 'form-control'
 
-        # self.fields['starting_time'].widget.attrs['class'] = 'form-control'
-        # self.fields['starting_time'].widget.attrs['placeholder'] = '00:00'
+class Short_CourseForm(forms.ModelForm):
+    class Meta:
+        model= Short_Course
+        fields= ('full_name','phone_number','email','course','start_date','end_date',)
+    def __init__(self,*args,**kwargs):
+        super(Short_CourseForm, self).__init__(*args,**kwargs)
+        self.fields['full_name'].widget.attrs['class'] = 'form-control'
+
+        self.fields['phone_number'].widget.attrs['class'] = 'form-control'
+
+        self.fields['email'].widget.attrs['class'] = 'form-control'
+
+        self.fields['start_date'].widget.attrs['class'] = 'form-control'
+        self.fields['start_date'].widget.attrs['readonly'] = True
+
+        self.fields['end_date'].widget.attrs['class'] = 'form-control'
+        self.fields['end_date'].widget.attrs['readonly'] = True
+
+        self.fields['course'].widget.attrs['class'] = 'form-control'
 
 class CommentForm(forms.ModelForm):
     #comment = forms.CharField(label="Your Comment", widget=forms.Textarea(attrs={'class':'form-control','cols':4, 'rows':5}))

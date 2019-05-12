@@ -1,15 +1,15 @@
 {% extends 'newusers/base.html' %}
 
 {% block title %}
-    <title> hired producers</title>
+    <title> Coelib Studio | Producer-Panel</title>
 {% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
 <br><br><br>
 <div class="container">
-    <h2 class="h5 gray-text text-left mb-4">Hello {{ user.username }}  you can view latest 5 hired producers but still you can filter within some period:</h2>
-    <form method="GET">
+    <h2 class="h5 gray-text text-left mb-4">Hello {{ user.username }}  you can view latest 5 records  but still you can filter within some period:</h2>
+    <form method="GET" action="{% url 'music_classes'%}">
 
               <div class="form-row ml-4" style="margin-left:20px;">
                 <div class="form-group col-md-3">
@@ -44,43 +44,47 @@
 
 
     </form>
-    <div class="containr">
+  
+    <div class="container">
+
+      {% if students %}
+      <div class="container">
+        <div class="containr">
       {% if messages%}
-      {% for hmsg in messages %}
+      {% for clasmsgs in messages %}
         <div class="alert alert-warning alert-dismissable" role="alert">
           <button class="close" data-dismiss="alert">
             <small><sup>x</sup></small>
           </button>
-          {{ hmsg }}
+          {{ clasmsgs }}
         </div>
       {% endfor %}
     {% endif%}
     </div>
-    <div class="container">
-
-      {% if fixed_dates %}
-      <div class="container">
       <table class="table table-hover table-sm">
                 <thead class="thead-dark">
                   <tr>
 
-                    <!-- <th>Producer Hired</th> -->
-                    <th>Client Name</th>
-                    <th>Contacts</th>
-                    <th>Date to Hired</th>
-                    <th>Time to Hired</th>
-                    <th>Duration of Hire</th>
+                   
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>email</th>
+                    <th>Course</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    
                     </tr>
                 </thead>
                   <tbody>
-          {% for dates in fixed_dates %}
+          {% for student in students %}
           <tr>
             <!-- <td>{{dates.producer_name}}</td> -->
-            <td>{{dates.fullName}}</td>
-            <td>{{dates.phoneNumber}}</td>
-            <td>{{ dates.hire_date }}</td>
-            <td>{{ dates.hire_time }}</td>
-            <td>{{dates.duration_days}} day(s)</td>
+            <td>{{student.full_name}}</td>
+            <td>{{student.phone_number}}</td>
+            <td>{{student.email }}</td>
+            <td>{{student.course }}</td>
+            <td>{{student.start_date }}</td>
+            <td>{{student.end_date}}</td>
           </tr>
           {% endfor %}
 

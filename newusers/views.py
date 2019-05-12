@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from services.models import HireProducer,StudioSession,Comment
+from services.models import Music_Production,Studio_Session,Comment,Short_Course
 from django.contrib.auth.models import User
 from datetime import datetime, date
 # Create your views here.
@@ -72,14 +72,14 @@ def hires(request):
     return render(request, 'newusers/producer_hires.html', context)
 
 
-
+#studio sessions
 def studio_sessions(request):
     sessions_from = request.GET.get('from')
     sessions_to = request.GET.get('to')
 
     if sessions_from == None or sessions_to == None:
-        count_sessions = StudioSession.objects.all().count()
-        sessions_available = StudioSession.objects.all().order_by('-start_date')[:5]
+        count_sessions = Studio_Session.objects.all().count()
+        sessions_available = Studio_Session.objects.all().order_by('-start_date')[:5]
         if count_sessions < 1:
             messages.success(request, 'There are no available sessions currently')
         elif count_sessions > 5:
@@ -87,7 +87,7 @@ def studio_sessions(request):
     else:
         sessions_from = datetime.strptime(sessions_from, "%Y-%m-%d").date()
         sessions_to = datetime.strptime(sessions_to, "%Y-%m-%d").date()
-        sessions_available = StudioSession.objects.filter(start_date__gte=sessions_from).filter(start_date__lte=sessions_to)
+        sessions_available = Studio_Session.objects.filter(start_date__gte=sessions_from).filter(start_date__lte=sessions_to)
         fromdt = str(sessions_from)
         todt = str(sessions_to)
         if(sessions_available.count() < 1):
@@ -97,6 +97,58 @@ def studio_sessions(request):
 
     context = {'sessions_available':sessions_available}
     return render(request, 'newusers/studio_sessions.html', context)
+
+#music production 
+def music_production_sessions(request):
+    sessions_from = request.GET.get('from')
+    sessions_to = request.GET.get('to')
+
+    if sessions_from == None or sessions_to == None:
+        count_sessions = Music_Production.objects.all().count()
+        sessions_available = Music_Production.objects.all().order_by('-start_date')[:5]
+        if count_sessions < 1:
+            messages.success(request, 'There are no available sessions currently')
+        elif count_sessions > 5:
+            messages.success(request, 'There are a total of '+ str(count_sessions)+' sessions but we are showing the latest 5')
+    else:
+        sessions_from = datetime.strptime(sessions_from, "%Y-%m-%d").date()
+        sessions_to = datetime.strptime(sessions_to, "%Y-%m-%d").date()
+        sessions_available = Music_Production.objects.filter(start_date__gte=sessions_from).filter(start_date__lte=sessions_to)
+        fromdt = str(sessions_from)
+        todt = str(sessions_to)
+        if(sessions_available.count() < 1):
+            messages.success(request, 'No Sessions available from '+ fromdt +' to '+todt)
+        else:
+            messages.success(request, 'Filtering Sessions from '+ fromdt +' to '+todt)
+
+    context = {'sessions_available':sessions_available}
+    return render(request, 'newusers/music_production.html', context)
+
+#enrolled student
+def enrolled_students(request):
+    sessions_from = request.GET.get('from')
+    sessions_to = request.GET.get('to')
+
+    if sessions_from == None or sessions_to == None:
+        count_sessions = Short_Course.objects.all().count()
+        students = Short_Course.objects.all().order_by('-start_date')[:5]
+        if count_sessions < 1:
+            messages.success(request, 'There are no students who have enrolled as per now')
+        elif count_sessions > 5:
+            messages.success(request, 'There are a total of '+ str(count_sessions)+' students but we are dispalying latest 5 who enrolled recently')
+    else:
+        sessions_from = datetime.strptime(sessions_from, "%Y-%m-%d").date()
+        sessions_to = datetime.strptime(sessions_to, "%Y-%m-%d").date()
+        students = Short_Course.objects.filter(start_date__gte=sessions_from).filter(start_date__lte=sessions_to)
+        fromdt = str(sessions_from)
+        todt = str(sessions_to)
+        if(students.count() < 1):
+            messages.success(request, 'No students who enrolled between '+ fromdt +' and '+todt)
+        else:
+            messages.success(request, 'Filtering students who enrolled between  '+ fromdt +' and '+todt)
+
+    context = {'students':students}
+    return render(request, 'newusers/music_classes.html', context)
 
 def read_comments(request):
     comments = Comment.objects.all().order_by('-comment_date')[:10]

@@ -1,4 +1,4 @@
-{% extends 'newusers/base2.html' %}
+{% extends 'newusers/base.html' %}
 
 {% block title %}
     <title> producer login </title>
@@ -6,9 +6,10 @@
 {% endblock %}
 
 {% block content %}
+<br><br>
 {% if messages%}
 {% for m in messages %}
-  <div class="alert alert-warning alert-dismissable" role="alert">
+  <div class="alert alert-warning alert-dismissable mt-5" role="alert">
     <button class="close" data-dismiss="alert">
       <small><sup>x</sup></small>
     </button>
@@ -17,19 +18,22 @@
 {% endfor %}
 {% endif%}
 
-    <div id="producer-login-card" class="card col-md-4 offset-md-4 mt-10">
+<div class="row">
+  <div class="container">
 
-    <div class=" crad-header mb-5">  <h2 class="text-center h1 mt-2 ">Producer Login</h2>	<hr> </div>
+    <div id="producer-login-card" class="card col-md-4 offset-md-4 mt-5">
+
+    <div class=" crad-header mb-2">  <h4 class="text-center h3 mt-4 ">Producer Login</h4>	<hr> </div>
     <form method="POST" action="{%url 'producer_login'%}">
     	{% csrf_token %}
 
     	<div class="form-group">
-            <p>User Name</p>
-    		<input type="text" class="form-control" name="username" placeholder="Enter Username" required>
+            <label>User Name</label>
+    		<input type="text" class="form-control" name="username"  required>
     	</div>
     	<div class="form-group">
-            <p>Password</p>
-    		<input type="password" class="form-control" name="password" placeholder="Enter password" required>
+            <label>Password</label>
+    		<input type="password" class="form-control" name="password" required>
     		<button type="submit" class="btn btn-primary mt-2 mr-auto ml-auto">
     		Login
     	</button>
@@ -37,5 +41,10 @@
 
     </form>
     </div>
+  </div>
+
+
+  </div>
+
 
 {% endblock %}
