@@ -25,7 +25,7 @@ SECRET_KEY = 'y01y@f7ma4d_mikd56r2#pv*!jd0@rjoee+_=z$4)owrdjl9vd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mutende.pythonanywhere.com']
+ALLOWED_HOSTS = ['mutende.pythonanywhere.com','localhost',]
 
 
 # Application definition
