@@ -21,9 +21,12 @@ def p_login(request):
         user = authenticate(request, username= username, password=password)
 
         if user is not None:
-            login(request, user)
-            messages.success(request, 'You have been logged in, WELCOME '+username+ '!')
-            return redirect('producerpage')
+            if user.is_superuser:
+                login(request,user)
+                return redirect('admin:index')
+            else:
+                login(request, user)            
+                return redirect('producerpage')
         else:
             messages.success(request, 'Error during login, please retry with correct credentials')
             return redirect('producer_login')
