@@ -1,3 +1,5 @@
+from .email_info import *
+
 """
 Django settings for coelibStudio project.
 
@@ -10,10 +12,26 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
+
+# EMAIL_USE_TLS= EMAIL_USE_TLS
+# EMAIL_HOST = EMAIL_HOST
+# EMAIL_PORT = EMAIL_PORT
+# EMAIL_HOST_USER = EMAIL_HOST_USER
+# EMAIL_HOST_PASSWORD = EMAIL_HOST_USER
+
+EMAIL_USE_TLS = EMAIL_USE_TLS
+EMAIL_HOST = EMAIL_HOST
+EMAIL_PORT = EMAIL_PORT
+EMAIL_HOST_USER = EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+ACCOUNT_EMAIL_VERIFICATION = ACCOUNT_EMAIL_VERIFICATION
+EMAIL_BACKEND = EMAIL_BACKEND
+
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -107,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'US/Eastern'
 
 USE_I18N = True
 
