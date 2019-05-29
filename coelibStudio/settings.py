@@ -43,7 +43,7 @@ SECRET_KEY = 'y01y@f7ma4d_mikd56r2#pv*!jd0@rjoee+_=z$4)owrdjl9vd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mutende.pythonanywhere.com','localhost',]
+ALLOWED_HOSTS = ['mutende.pythonanywhere.com','localhost','remotemysql.com',]
 
 
 # Application definition
@@ -113,11 +113,14 @@ WSGI_APPLICATION = 'coelibStudio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'YpTnVlsCRM',
-        'USER': 'YpTnVlsCRM',
-        'PASSWORD': '25wB8Xn7c2',
-        'HOST': 'remotemysql.com',
-        'PORT': '3306'
+        'NAME': 'mutende$coelib',
+        'USER': 'mutende',
+        'PASSWORD': '@emmi$1995',
+        'HOST': 'mutende.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 
