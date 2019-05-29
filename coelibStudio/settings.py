@@ -41,9 +41,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'y01y@f7ma4d_mikd56r2#pv*!jd0@rjoee+_=z$4)owrdjl9vd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['mutende.pythonanywhere.com','localhost','remotemysql.com',]
+ALLOWED_HOSTS = ['mutende.pythonanywhere.com','localhost',]
 
 
 # Application definition
@@ -106,7 +106,11 @@ WSGI_APPLICATION = 'coelibStudio.wsgi.application'
 #         'USER': 'mutende',
 #         'PASSWORD': 'm0910',
 #         'HOST': 'localhost',
-#         'PORT': '3306'
+#         'PORT': '3306',
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#         },
+        
 #     }
 # }
 
