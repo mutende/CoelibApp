@@ -93,12 +93,34 @@ WSGI_APPLICATION = 'coelibStudio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'coelib',
+#         'USER': 'mutende',
+#         'PASSWORD': 'm0910',
+#         'HOST': 'localhost',
+#         'PORT': '3306'
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'YpTnVlsCRM',
+        'USER': 'YpTnVlsCRM',
+        'PASSWORD': '25wB8Xn7c2',
+        'HOST': 'remotemysql.com',
+        'PORT': '3306'
     }
 }
+
 
 
 # Password validation
