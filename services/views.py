@@ -84,7 +84,7 @@ def comment(request):
         sender = EMAIL_HOST_USER
         comment = request.POST['comment']
         send_mail(name,comment,sender,[recepient_email],fail_silently=False)
-        form.save(commit = False)
+        form.save()
         form = CommentForm()        
     context = {'form':form}
     return render(request, 'services/make_a_comment.html', context)
