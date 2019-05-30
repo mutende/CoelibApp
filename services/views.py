@@ -5,7 +5,7 @@ from django.core.mail import send_mail
 from datetime import datetime
 from django.shortcuts import render, redirect
 from services.forms import Short_CourseForm, Music_ProductionForm, CommentForm,Studio_SessionForm
-from coelibStudio.email_info import EMAIL_HOST_USER, ADMIN_EMAIL
+from coelibStudio.email_info import EMAIL_HOST_USER,ADMIN_EMAIL
 
 def home(request):
 
